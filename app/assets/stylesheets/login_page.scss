@@ -1,0 +1,12 @@
+@import "base/variables";
+
+.login-page-container {
+  width: 100%;
+  height: 100em;
+  display: inline-flex;
+
+  background-color: $dark-bg-color;
+
+  // background: linear-gradient(#6b94d6, #e5e5e5);
+
+}

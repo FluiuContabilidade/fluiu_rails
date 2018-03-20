@@ -1,0 +1,41 @@
+@import "./base/variables";
+
+.login-box {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 8em;
+  font-family: $open-sans;
+  background-color: $transparent;
+  border: 1px solid white;
+
+  .lb-container {
+    margin-top: 2em;
+    // background-color: red;
+
+    .lb-title {
+      text-align: center;
+      color: white;
+      margin-bottom: 1em;
+    }
+
+    .lb-input-field {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: none;
+
+      width: 90%;
+      padding: 0.5em;
+      // height: 4em;
+
+      font-size: 2em;
+      text-align: center;
+
+      display: flex;
+      margin: 0 auto;
+
+
+      border-radius: 0;
+    }
+  }
+}

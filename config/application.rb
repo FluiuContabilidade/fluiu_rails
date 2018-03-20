@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module FluiuRails
   class Application < Rails::Application
+    config.assets.enabled = true
+    config.serve_static_assets = true
+  	config.assets.paths << Rails.root.join("app", "assets", "stylesheets")
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

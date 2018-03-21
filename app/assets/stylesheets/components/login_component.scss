@@ -1,0 +1,69 @@
+@import "./base/variables";
+
+.login-box {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 8em;
+  font-family: $open-sans;
+  background-color: $transparent;
+  // border: 1px solid white;
+
+  .lb-container {
+    margin-top: 2em;
+    // background-color: red;
+
+    .lb-title {
+      text-align: center;
+      color: black;
+      margin-bottom: 1em;
+    }
+
+    .lb-input-field {
+
+      width: 90%;
+      padding: 0.5em;
+      // height: 4em;
+
+      font-size: 2em;
+      text-align: center;
+
+      display: flex;
+      margin: 0 auto;
+      margin-bottom: 1em;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: none;
+      border-radius: 0;
+    }
+
+    .lb-button {
+      width: 90%;
+      padding: 0.5em;
+      // height: 4em;
+
+      font-size: 2em;
+      text-align: center;
+
+      display: flex;
+      margin: 0 auto;
+      margin-bottom: 1em;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      border: none;
+      border-radius: 0;
+    }
+
+    .lb-text {
+      color: black;
+      // text-align: center;
+    }
+
+  }
+}
+
+.login-box .lb-container .lb-button:hover{
+  background-color: #a8a8aa;
+}

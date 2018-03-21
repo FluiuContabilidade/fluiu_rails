@@ -25,13 +25,16 @@
 
 <%= render "devise/shared/links" %> -->
 
-<div class="login-page-container">
-  <div class="login-box">
-    <div class="lb-container">
-      <h1  class="lb-title"> Entrar </h1>
-
-      <input type="text" name="" value="" class="lb-input-field" placeholder="E-mail">
-
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="login-page-container">
+    <div class="login-box">
+      <div class="lb-container">
+        <h1  class="lb-title"> Entrar </h1>
+        <%= f.email_field :email, autofocus: true, class:'lb-input-field', placeholder:'E-mail' %>
+        <%= f.password_field :password, class:'lb-input-field', placeholder:'Senha' %>
+        <%= f.submit "Entrar", class:'lb-button'%>
+        <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class:'lb-text' %><br/>
+      </div>
     </div>
   </div>
-</div>
+<% end %>

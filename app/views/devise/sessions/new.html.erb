@@ -30,9 +30,19 @@
     <div class="login-box">
       <div class="lb-container">
         <h1  class="lb-title"> Entrar </h1>
-        <%= f.email_field :email, autofocus: true, class:'lb-input-field', placeholder:'E-mail' %>
-        <%= f.password_field :password, class:'lb-input-field', placeholder:'Senha' %>
-        <%= f.submit "Entrar", class:'lb-button'%>
+
+          <div class="form-group">
+            <label for="email"></label>
+            <%= f.email_field :email, autofocus: true, class:'form-control', placeholder:'E-mail' %>
+          </div>
+
+          <div class="form-group">
+            <label for="password"></label>
+            <%= f.password_field :password, class:'form-control', placeholder:'Senha' %>
+          </div>
+
+          <%= f.submit "Entrar", class:'btn btn-primary'%>
+          <br>
         <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class:'lb-text' %><br/>
       </div>
     </div>

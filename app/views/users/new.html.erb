@@ -1,10 +1,37 @@
+<h2 style="text-align: center">Criando usuário</h2>
+
+
 <form action="create" method="POST">
-  <input type="text" name="user[email]" value="" placeholder="email">
-  <input type="text" name="user[company]" value="" placeholder="company">
-  <input type="text" name="user[cnpj]" value="" placeholder="cnpj">
-  <input type="text" name="user[cpf]" value="" placeholder="cpf">
-  <input type="text" name="user[telephone]" value="" placeholder="telephone">
-  <input type="hidden" name="user[password]" value="" placeholder="telephone">
-  <input type="hidden" name="user[password_confirmation]" value="" placeholder="telephone">
-  <button type="submit" name="button"> Enviar </button>
+  <div style="width: 50%; margin: 0 auto;">
+    <%= flash_message %>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="text" name="user[email]" value="" placeholder="" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="company">Empresa</label>
+      <input type="text" name="user[company]" value="" class="form-control "placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="cnpj">CNPJ</label>
+      <input type="text" name="user[cnpj]" value="" class="form-control "placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="cpf">CPF</label>
+      <input type="text" name="user[cpf]" value="" class="form-control "placeholder="">
+    </div>
+
+    <div class="form-group">
+      <label for="telephone">Telefone</label>
+      <input type="text" name="user[telephone]" value="" class="form-control "placeholder="">
+    </div>
+
+    <input type="hidden" name="user[password]" value="" placeholder="telephone">
+    <input type="hidden" name="user[password_confirmation]" value="" placeholder="telephone">
+    <button type="submit" name="button" class="btn btn-primary"> Enviar </button>
+  </div>
 </form>

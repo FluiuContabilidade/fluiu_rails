@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   devise_scope :user do
+    get '/signout', to: 'devise/sessions#destroy', as: :signout
     get 'user/new', to: 'users#new'
     post 'user/create', to: 'users/registrations#custom_account_creation', as: :create_user
   end

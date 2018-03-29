@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: { registrations: "registrations" }
 
+  scope :users do
+    get '/index', to:'users#index'
+    get '/details/:id', to: 'users#show'
+    get '/delete/:id', to: 'users#destroy'
+  end
+
   devise_scope :user do
     get '/signout', to: 'devise/sessions#destroy', as: :signout
     get 'user/new', to: 'users#new'

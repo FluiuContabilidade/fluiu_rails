@@ -11,13 +11,14 @@
   <body>
     <nav class="navbar navbar-dark bg-primary">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" style="color:white" href="/">Fluiu Contabilidade</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class=""><a href="/user/new" style="color:white">Usuários</a></li>
-        </ul>
-      </div>
+       <div class="navbar-header">
+         <a class="navbar-brand" href="/" style="color: white;">Fluiu Contabilidade</a>
+       </div>
+       <ul class="nav navbar-nav">
+         <li><a href="/users/index" style="color: white;">Clientes</a></li>
+         <li><a href="/signout" style="color: white;">Sair</a></li>
+       </ul>
+     </div>
     </nav>
     <%= yield %>
   </body>

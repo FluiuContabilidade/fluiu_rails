@@ -1,10 +1,25 @@
-<table>
-  <tr>
-    <th>Email</th>
-  </tr>
-  <% @users.each do |f| %>
-    <tr>
-      <td><%= f.email %></td>
-    </tr>
-  <%end%>
-</table>
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Clientes</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td> <a href="/users/details/<%=user.id%>" class="btn btn-primary">Visualizar</a> </td>
+      <td> <a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

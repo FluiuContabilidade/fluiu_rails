@@ -34,10 +34,16 @@ gem 'jbuilder', '~> 2.5'
 
 #Gem used to implement authentication
 gem 'devise'
+# Flat UI Gem
+# gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 
 #Bootstrap gem set-up
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+gem 'byebug'
+
+## Gem to radomly generate user passwords
+gem 'passgen', '~> 1.0', '>= 1.0.2'
 
 
 group :development, :test do

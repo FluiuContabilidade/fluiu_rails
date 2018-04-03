@@ -20,4 +20,5 @@ class UsersController < ApplicationController
     redirect_to '/users/index'
   end
 
+
 end

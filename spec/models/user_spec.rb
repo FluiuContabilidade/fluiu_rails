@@ -11,5 +11,6 @@ RSpec.describe User, type: :model do
     user = FactoryBot.build(:user, email: 'invalidemailaddress')
     expect(user).to_not be_valid
   end
+  
 
 end

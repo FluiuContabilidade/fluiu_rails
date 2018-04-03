@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get '/index', to:'users#index'
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
+    get '/:id/accounting_info', to: 'users#accounting_info'
+    put '/:id/accounting_info', to: 'invoice#add_accounting_info', as: :add_accounting_info_path
   end
 
   devise_scope :user do

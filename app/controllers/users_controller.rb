@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def create
+  end
+
   def destroy
     User.find(params[:id]).destroy
     redirect_to '/users/index'

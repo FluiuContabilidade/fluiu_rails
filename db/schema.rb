@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 20180322221616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "company"
-    t.integer "cnpj"
-    t.integer "cpf"
-    t.integer "telephone"
+    t.string "cnpj"
+    t.string "cpf"
+    t.string "telephone"
     t.integer "role"
     t.string "confirmation_token"
     t.datetime "confirmed_at"

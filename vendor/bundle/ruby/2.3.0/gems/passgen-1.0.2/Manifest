@@ -1,0 +1,10 @@
+CHANGELOG
+Manifest
+README.rdoc
+Rakefile
+init.rb
+lib/passgen.rb
+lib/passgen/probabilities.rb
+lib/passgen/strength_analyzer.rb
+spec/passgen/strength_analyzer_spec.rb
+spec/passgen_spec.rb

@@ -13,8 +13,13 @@ class InvoicesController < ApplicationController
     invoice = Invoice.new(user_id: invoice_params[:user_id])
     invoice.invoice_file = invoice_params[:file]
 
-    invoice.save
-    # byebug
+    if invoice.save?
+      flash[:notice] = "Ação Realizada com sucesso!"
+      redirect_to "/home"
+    else
+      flash[:notice] = "Ação falhou."
+      redirect_to "/home"
+    end
   end
 
 end

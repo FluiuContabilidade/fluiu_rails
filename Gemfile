@@ -47,6 +47,7 @@ gem 'passgen', '~> 1.0', '>= 1.0.2'
 ##
 gem 'carrierwave', '~> 1.0'
 ##
+gem "rails_best_practices"
 
 
 group :development, :test do

@@ -9,6 +9,14 @@ class User < ApplicationRecord
 
  has_many :invoices
 
+ def user_invoice_months
+   months = []
+   invoices.group_by(&:month).each do |key,value|
+     months.push(key)
+   end
+   return months
+ end
+
 
 
 

@@ -6,5 +6,6 @@ FactoryBot.define do
     telephone {Faker::Number.number(8)}
     email {Faker::Internet.email}
     password {Passgen::generate}
+    invoices []
   end
 end

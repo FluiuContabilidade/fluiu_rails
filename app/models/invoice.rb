@@ -1,5 +1,5 @@
 class Invoice < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   mount_uploader :invoice_file, InvoiceFileUploader
 
   def self.get_xml_serial_number xml_content
@@ -24,7 +24,7 @@ class Invoice < ApplicationRecord
 
     max = invoice_numbers[invoice_numbers.size - 1]
     min = invoice_numbers[0]
-    
+
     for i in min..max
       return true if !invoice_numbers.include? i
     end

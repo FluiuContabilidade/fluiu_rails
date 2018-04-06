@@ -1,8 +1,11 @@
-<%= form_for @user, url: 'accounting_info', html: { method: :put } do |f| %>
+<%= form_for @user, url: 'accounting_info', html: { method: :post } do |f| %>
 <div class="" style="width:60%; margin:0 auto;">
   <div class="form-group">
-    <%= f.label :image, 'Image' %>
-    <%= f.file_field :image, multiple: true, name: "attachment[file]" %>
+    <%= f.label :invoices, 'XMLs das notas fiscais' %>
+    <%= f.file_field :invoices, multiple: true, name: "attachment[files][]" %>
   </div>
+
+  <input type="hidden" name="user_id" value="<%=@user.id%>">
+  <%= f.submit "Enviar", class:'btn btn-default' %>
 </div>
 <% end %>

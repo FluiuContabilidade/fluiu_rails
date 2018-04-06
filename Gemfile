@@ -44,6 +44,9 @@ gem 'byebug'
 
 ## Gem to radomly generate user passwords
 gem 'passgen', '~> 1.0', '>= 1.0.2'
+##
+gem 'carrierwave', '~> 1.0'
+##
 
 
 group :development, :test do

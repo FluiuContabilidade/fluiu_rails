@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
  enum role: [ :client, :agent, :admin], _suffix: true
 
+ has_many :invoices
+
 
 
 

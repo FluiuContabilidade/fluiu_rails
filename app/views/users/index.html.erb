@@ -16,8 +16,9 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.email %></td>
-        <td> <a href="/users/details/<%=user.id%>" class="btn btn-primary">Visualizar</a> </td>
-      <td> <a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
+        <td><a href="/users/<%=user.id%>/invoices_index" class="btn btn-primary">Notas Fiscais</a>
+        <td><a href="/users/details/<%=user.id%>" class="btn btn-primary">Visualizar</a> </td>
+        <td><a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
       </tr>
       <% end %>
     </tbody>

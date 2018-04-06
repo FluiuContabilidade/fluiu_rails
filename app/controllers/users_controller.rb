@@ -20,5 +20,10 @@ class UsersController < ApplicationController
     redirect_to '/users/index'
   end
 
+  def invoices_index
+    @months = User.find(params[:id]).user_invoice_months
+    @id = params[:id]
+  end
+
 
 end

@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+
   def accounting_info
     @user = User.find(params[:id])
   end
@@ -20,6 +21,19 @@ class InvoicesController < ApplicationController
       flash[:notice] = "Ação falhou."
       redirect_to "/home"
     end
+  end
+
+  def monthly_invoices
+    invoices = Invoice.where(user_id: params[:id], month: params[:month])
+    invoices = InvoicesService.setup_invoice_collection invoices
+    warning = Invoice.missing_invoices? invoices
+
+    if warning == true
+      @message = "Notas Fiscais faltando."
+    else
+      @message = "Tudo correto!"
+    end
+
   end
 
 end

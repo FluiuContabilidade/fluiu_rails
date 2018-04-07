@@ -1,1 +1,7 @@
 <%=@message%>
+<br>
+
+<% @invoices.each do |f| %>
+  <%= link_to f.invoice_file.file.filename, f.invoice_file.url %>
+  <br>
+<% end %>

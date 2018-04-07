@@ -20,7 +20,7 @@ class Invoice < ApplicationRecord
       invoice_numbers.push(nnf.to_i) if nnf != nil
     end
 
-    invoice_numbers.sort
+    invoice_numbers = invoice_numbers.sort
 
     max = invoice_numbers[invoice_numbers.size - 1]
     min = invoice_numbers[0]

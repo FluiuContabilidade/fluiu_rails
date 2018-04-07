@@ -24,8 +24,8 @@ class InvoicesController < ApplicationController
   end
 
   def monthly_invoices
-    invoices = Invoice.where(user_id: params[:id], month: params[:month])
-    invoices = InvoicesService.setup_invoice_collection invoices
+    @invoices = Invoice.where(user_id: params[:id], month: params[:month])
+    invoices = InvoicesService.setup_invoice_collection @invoices
     warning = Invoice.missing_invoices? invoices
 
     if warning == true

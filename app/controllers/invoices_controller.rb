@@ -11,16 +11,18 @@ class InvoicesController < ApplicationController
   end
 
   def create_invoice(invoice_params)
-    invoice = Invoice.new(user_id: invoice_params[:user_id], month: InvoicesService.format_date(Invoice.get_xml_content_by_tag('dhEmi', file)))
+    month_field = Invoice.get_xml_content_by_tag('dhEmi', invoice_params[:file].read)
+    invoice = Invoice.new(user_id: invoice_params[:user_id], month: InvoicesService.format_date(month_field) )
     invoice.invoice_file = invoice_params[:file]
 
-    if invoice.save?
+    if invoice.save
       flash[:notice] = "Ação Realizada com sucesso!"
       redirect_to "/home"
     else
       flash[:notice] = "Ação falhou."
       redirect_to "/home"
     end
+
   end
 
   def monthly_invoices

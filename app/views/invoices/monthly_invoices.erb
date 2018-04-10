@@ -2,6 +2,7 @@
 <br>
 
 <% @invoices.each do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <%= link_to f.invoice_file.file.filename, f.invoice_file.url %>
   <br>
 <% end %>

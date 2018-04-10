@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:add_monthly_accounting_info]
 
   def accounting_info
     @user = User.find(params[:id])
@@ -11,11 +12,11 @@ class InvoicesController < ApplicationController
   end
 
   def create_invoice(invoice_params)
-    month_field = Invoice.get_xml_content_by_tag('dhEmi', invoice_params[:file].read)
-    invoice = Invoice.new(user_id: invoice_params[:user_id], month: InvoicesService.format_date(month_field) )
+    invoice = Invoice.new(user_id: invoice_params[:user_id])
     invoice.invoice_file = invoice_params[:file]
 
     if invoice.save
+      invoice.update_month_field
       flash[:notice] = "Ação Realizada com sucesso!"
       redirect_to "/home"
     else
@@ -28,13 +29,6 @@ class InvoicesController < ApplicationController
   def monthly_invoices
     @invoices = Invoice.where(user_id: params[:id], month: params[:month])
     invoices = InvoicesService.setup_invoice_collection @invoices
-    warning = Invoice.missing_invoices? invoices
-
-    if warning == true
-      @message = "Notas Fiscais faltando."
-    else
-      @message = "Tudo correto!"
-    end
 
   end
 

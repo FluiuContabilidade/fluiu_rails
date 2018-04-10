@@ -10,6 +10,7 @@ RSpec.describe Invoice, type: :model do
             xml.infNFe{
               xml.ide{
                 xml.nNF nnf
+                xml.vNF 200.0
               }
             }
           }
@@ -38,18 +39,23 @@ RSpec.describe Invoice, type: :model do
       @invalid_xml_collection.push(xml.to_xml)
     end
     xml = create_xml_file random_number + 20
-    @invalid_xml_collection.push(xml.to_xml) 
+    @invalid_xml_collection.push(xml.to_xml)
 
     @empty_collection = []
 
   end
 
-  #Regex to be used /<nNF>(.*)<\/nNF>/
-  it "successfully gets xml serial number" do
-    result = Invoice.get_xml_serial_number(@valid_xml_file.to_xml)
-    error = Invoice.get_xml_serial_number(@invalid_xml_file)
-    expect(result).to eq('474423')
-    expect(error).to eq(nil)
+  it "sucessfully get xml content by tag (single)" do
+    result = Invoice.get_xml_content_by_tag('nNF', @valid_xml_file.to_xml)
+    result2 = Invoice.get_xml_content_by_tag('vNF', @valid_xml_file.to_xml )
+
+    expect(result.first).to eq('474423')
+    expect(result2.first).to eq('200.0')
+  end
+
+  it 'returns nil searching for inexistent tag' do
+    error = Invoice.get_xml_content_by_tag('IDontHaveThisTag', @valid_xml_file.to_xml)
+    expect(error.first).to eq(nil)
   end
 
   it "successfully determines missing invoices" do

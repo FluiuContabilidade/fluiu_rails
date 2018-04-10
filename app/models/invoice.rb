@@ -2,9 +2,9 @@ class Invoice < ApplicationRecord
   belongs_to :user, optional: true
   mount_uploader :invoice_file, InvoiceFileUploader
 
-  def self.get_xml_serial_number xml_content
+  def self.get_xml_content_by_tag(tag, content)
     begin
-      @result = xml_content.scan(/<nNF>(.*)<\/nNF>/).first.first
+      @result = content.scan(/ <#{tag}>(.*)<\/#{tag}>/).flatten
     rescue
       return nil
     end
@@ -16,8 +16,8 @@ class Invoice < ApplicationRecord
 
     invoice_numbers = []
     invoice_collection.each do |item|
-      nnf = Invoice.get_xml_serial_number item
-      invoice_numbers.push(nnf.to_i) if nnf != nil
+      nnf = Invoice.get_xml_content_by_tag('nNF', item)
+      invoice_numbers.push(nnf.first.to_i) if nnf.first != nil
     end
 
     invoice_numbers = invoice_numbers.sort

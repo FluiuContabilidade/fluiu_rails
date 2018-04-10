@@ -11,7 +11,7 @@ class InvoicesController < ApplicationController
   end
 
   def create_invoice(invoice_params)
-    invoice = Invoice.new(user_id: invoice_params[:user_id])
+    invoice = Invoice.new(user_id: invoice_params[:user_id], month: InvoicesService.format_date(Invoice.get_xml_content_by_tag('dhEmi', file)))
     invoice.invoice_file = invoice_params[:file]
 
     if invoice.save?

@@ -8,4 +8,8 @@ class InvoicesService
     return col
   end
 
+  def self.format_date date
+    return date[0..6]
+  end
+
 end

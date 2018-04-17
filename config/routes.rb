@@ -21,6 +21,11 @@ Rails.application.routes.draw do
 
   scope :invoices do
     get ':id/:month', to: 'invoices#monthly_invoices'
+    get ':id/:month/:type', to:'invoices#monthly_invoices_by_type'
+    
+    scope :report do
+      get 'individual/:id', to:'invoices#individual_report'
+    end
   end
 
   root to: 'pages#home_page'

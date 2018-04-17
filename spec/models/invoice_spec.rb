@@ -10,7 +10,9 @@ RSpec.describe Invoice, type: :model do
             xml.infNFe{
               xml.ide{
                 xml.nNF nnf
-                xml.vNF 200.0
+                xml.vNF 1.0
+                xml.CNPJ 34534220000117
+                xml.CNPJ 34512134233417
               }
             }
           }
@@ -49,7 +51,7 @@ RSpec.describe Invoice, type: :model do
     result2 = Invoice.get_xml_content_by_tag('vNF', @valid_xml_file.to_xml )
 
     expect(result.first).to eq('474423')
-    expect(result2.first).to eq('200.0')
+    expect(result2.first).to eq('1.0')
   end
 
   it 'returns nil searching for inexistent tag' do
@@ -65,6 +67,16 @@ RSpec.describe Invoice, type: :model do
 
   it "returns greatest invoice number" do
     expect(Invoice.missing_invoices(@valid_xml_collection, true)).to eq(20)
+  end
+
+  it "returns sum of invoice pricing" do
+    expect(Invoice.price_sum(@valid_xml_collection)).to eq(11.0)
+  end
+
+  it "returns if invoice is of entry type" do
+    expect(Invoice.entry_type?(@valid_xml_file.to_xml, '34534220000117')).to be(true)
+    expect(Invoice.entry_type?(@valid_xml_file.to_xml, '30120310231203')).to be(false)
+    expect(Invoice.entry_type?(@invalid_xml_file, '34534220000117')).to be(false)
   end
 
 

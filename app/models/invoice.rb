@@ -4,7 +4,7 @@ class Invoice < ApplicationRecord
 
   def self.get_xml_content_by_tag(tag, content)
     begin
-      @result = content.scan(/<#{tag}>(.*)<\/#{tag}>/).flatten
+      @result = content.scan(/<#{tag}>(.*?)<\/#{tag}>/).flatten
     rescue
       return nil
     end
@@ -17,7 +17,7 @@ class Invoice < ApplicationRecord
     invoice_numbers = []
     invoice_collection.each do |item|
       nnf = Invoice.get_xml_content_by_tag('nNF', item)
-      invoice_numbers.push(nnf.first.to_i) if nnf.first != nil
+      invoice_numbers.push(nnf.first.to_i) if nnf != nil
     end
 
     invoice_numbers = invoice_numbers.sort
@@ -37,6 +37,21 @@ class Invoice < ApplicationRecord
   def update_month_field
     data_field = Invoice.get_xml_content_by_tag('dhEmi', self.invoice_file.read).first[0..6]
     update_attributes(month: data_field)
+  end
+
+  def self.price_sum collection
+    sum = 0
+    for invoice in collection do
+      val = Invoice.get_xml_content_by_tag('vNF', invoice).first.to_f
+      sum += val.to_f
+    end
+
+    return sum
+  end
+
+  def self.entry_type?(invoice, cnpj)
+    return true if get_xml_content_by_tag('CNPJ', invoice).first == cnpj
+    return false
   end
 
 

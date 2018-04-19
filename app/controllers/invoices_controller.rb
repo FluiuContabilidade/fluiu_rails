@@ -30,13 +30,9 @@ class InvoicesController < ApplicationController
   end
 
   def monthly_invoices_by_type
-    @invoices = []
-    Invoice.where(user_id: params[:id], month: params[:month]).each do |i|
-      if params[:type] == 'out'
-        @invoices.push(i) if Invoice.entry_type?(i.invoice_file.read, User.find(params[:id]).cnpj) == true
-      else
-        @invoices.push(i) if Invoice.entry_type?(i.invoice_file.read, User.find(params[:id]).cnpj) == false
-      end
+    @invoices = InvoicesService.group_invoice_by_entry_type(params[:id], params[:month], params[:type])
+    if params[:filter] == 'dif_origin'
+      @invoices = @invoices.reject {|invoice| Invoice.is_a_local_invoice?(invoice.invoice_file.read) == true }
     end
   end
 

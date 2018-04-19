@@ -20,9 +20,12 @@ Rails.application.routes.draw do
   end
 
   scope :invoices do
-    get ':id/:month', to: 'invoices#monthly_invoices'
-    get ':id/:month/:type', to:'invoices#monthly_invoices_by_type'
-    
+    scope :monthly do
+      get ':id/:month', to: 'invoices#monthly_invoices'
+      get ':id/:month/:type', to:'invoices#monthly_invoices_by_type'
+      get ':id/:month/:type/:filter', to:'invoices#monthly_invoices_by_type'
+    end
+
     scope :report do
       get 'individual/:id', to:'invoices#individual_report'
     end

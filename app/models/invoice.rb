@@ -54,5 +54,13 @@ class Invoice < ApplicationRecord
     return false
   end
 
+  def self.is_a_local_invoice? invoice
+    cpof = Invoice.get_xml_content_by_tag('CFOP', invoice)
+    cpof.each do |val|
+      return false if (val[0] == '6') or (val[0] == '7')
+    end
+    return true
+  end
+
 
 end

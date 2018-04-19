@@ -13,6 +13,7 @@ RSpec.describe Invoice, type: :model do
                 xml.vNF 1.0
                 xml.CNPJ 34534220000117
                 xml.CNPJ 34512134233417
+                xml.CFOP 5102
               }
             }
           }
@@ -77,6 +78,10 @@ RSpec.describe Invoice, type: :model do
     expect(Invoice.entry_type?(@valid_xml_file.to_xml, '34534220000117')).to be(true)
     expect(Invoice.entry_type?(@valid_xml_file.to_xml, '30120310231203')).to be(false)
     expect(Invoice.entry_type?(@invalid_xml_file, '34534220000117')).to be(false)
+  end
+
+  it "returns if invoice is a local invoice" do
+    expect(Invoice.is_a_local_invoice? @valid_xml_file.to_xml).to be(true)
   end
 
 

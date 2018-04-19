@@ -62,5 +62,12 @@ class Invoice < ApplicationRecord
     return true
   end
 
+  serviço (quando 5933; 6933; 7933)
+  def self.is_a_service_invoice? invoice
+    cfop = Invoice.get_xml_content_by_tag('CFOP', invoice)
+    return false if (cfop.first == '5102') or (cfop.first == '6102') or (cfop.first == '7102')
+    return true if (cfop.first == '5933') or (cfop.first == '6933') or (cfop.first == '7933')
+  end
+
 
 end

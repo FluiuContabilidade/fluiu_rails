@@ -1,0 +1,38 @@
+.navbar-component {
+  display: flex;
+  // background-color: green ;
+  width: 100%;
+  margin-bottom: 2em;
+  border-bottom: 1px solid;
+  border-color: #e0e0e0;
+
+  font-family: $roboto;
+  font-size: 1.3em;
+
+
+  >.app-nav-container {
+    width: 100%;
+    margin: 0 auto;
+
+    // background-color: red;
+
+    >.app-nav-content {
+      display: table-cell;
+      text-decoration: none;
+      font-family: $roboto;
+      color: black;
+      height: 100%;
+      padding: 0.5em 1.5em 0.5em 1.5em;
+      // padding-right: 1.5em;
+
+      >.nav-logo {
+        height:2em;
+      }
+    }
+
+    >.app-nav-content:hover{
+      background-color: #e0e0e0;
+    }
+
+  }
+}

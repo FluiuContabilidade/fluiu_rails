@@ -10,8 +10,16 @@
 
   <body onload="<%flash.each do |key, value|%> $.notify('<%=value%>', <%=key%>); <%end%>">
     <% if current_user %>
-      <nav class="navbar navbar-dark bg-primary" style="background-color: #00CCED;">
-        <div class="container-fluid">
+      <nav class="navbar-component">
+        <div class="app-nav-container">
+          <div class="app-nav-content">
+            <a href="/">  <%= image_tag("LogoFluiuCiano.png", style:'height: 3em',:alt => "logo") %> </a>
+          </div>
+          <div class="app-nav-content">
+            <a style="text-decoration: none;"href="/users/index">Usuários</a>
+          </div>
+        </div>
+        <!-- <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="/" style="color: white;">Fluiu Contabilidade</a>
           </div>
@@ -19,7 +27,7 @@
             <li><a href="/users/index" style="color: white;">Clientes</a></li>
             <li><a href="/signout" style="color: white;">Sair</a></li>
           </ul>
-        </div>
+        </div> -->
       </nav>
     <%end%>
     <%= yield %>

@@ -1,0 +1,63 @@
+@import "./base/variables";
+
+.info-box {
+  display: inline-block;
+  text-decoration: none;
+
+  height: 30%;
+  width: 30%;
+  margin-right: 2em;
+  margin-bottom: 2em;
+
+  background-color: $cyan;
+
+  >.info-box-container {
+    display: table;
+    width: 70%;
+    height: 70%;
+
+    margin: 0 auto;
+    margin-top: 2em;
+    // background-color: red;
+
+    >.info-box-title {
+      text-align: center;
+      font-family: $roboto;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
+.info-box:hover{
+  background-color: #00b4cc;
+  text-decoration: none;
+}
+
+
+.ib-secondary {
+  display: inline-block;
+  text-decoration: none;
+  // background-color: red;
+  height: 30%;
+  width: 30%;
+  margin-bottom: 2em;
+  border: 1px solid;
+  border-color:  #00b4cc;
+
+
+  >.ib-vertical-div {
+    display: table;
+    // display: none;
+    height: 45%;
+    width: 90%;
+    margin: 0 auto;
+    // background-color: green;
+    text-align: center;
+
+    h1,h2,h3{
+      margin: 0.5em 0em 0em 0em;
+    }
+  }
+}

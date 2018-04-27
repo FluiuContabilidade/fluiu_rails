@@ -31,11 +31,11 @@
         </div>
         <div class="lc-field-set">
           <label for="email" class="lc-label">E-mail</label>
-          <%= f.email_field :email, autofocus: true, class:'lc-text-field'%>
+          <%= f.email_field :email, id:'email', autofocus: true, class:'lc-text-field'%>
         </div>
         <div class="lc-field-set">
           <label for="password" class="lc-label">Senha</label>
-          <%= f.password_field :password, class:'lc-text-field'%>
+          <%= f.password_field :password, id: 'password', class:'lc-text-field'%>
         </div>
         <div class="lc-field-set" style="padding-bottom: 4em;">
           <!-- <button type="button" name="button" onclick="$.notify('Hello World');">oi</button> -->

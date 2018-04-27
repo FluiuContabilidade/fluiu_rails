@@ -31,6 +31,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :invoices, 'XMLs das notas fiscais' %>
+      <%= f.file_field :invoices, multiple: true, name: "attachment[files][]" %>
+    </div>
+
+    <div class="form-group">
       <label for="type">Anexo</label>
       <select class="form-control" name="user[type]">
         <option value="1">Anexo 1</option>

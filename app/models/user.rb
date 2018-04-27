@@ -18,6 +18,21 @@ class User < ApplicationRecord
    return months
  end
 
+ def get_monthly_invoice_total(month, return_type)
+   all_invoices = invoices.where(month: month)
+   invoices = []
+
+   all_invoices.each do |f|
+     if return_type == 'in'
+       invoices.push(f.invoice_file.read) if Invoice.entry_type?(f.invoice_file.read, cnpj)
+     else
+       invoices.push(f.invoice_file.read) if !(Invoice.entry_type?(f.invoice_file.read, cnpj))
+     end
+   end
+
+   return (Invoice.price_sum(invoices))
+ end
+
  def get_company_tax_percentage
    if(earnings_type == "1")
      case earnings_range

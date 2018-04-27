@@ -1,5 +1,6 @@
 class Invoice < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :monthly_report
   mount_uploader :invoice_file, InvoiceFileUploader
 
   def self.get_xml_content_by_tag(tag, content)

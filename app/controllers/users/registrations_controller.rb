@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :verify_authenticity_token, :only => [:custom_account_creation]
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
   # GET /resource/sign_up
   # def new
   #   super
@@ -13,8 +13,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
       build_resource(sign_up_params)
-
+      attach_files @user
       resource.save
+
       yield resource if block_given?
       if resource.persisted?
         if resource.active_for_authentication?
@@ -43,6 +44,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params[:user][:password] = random_user_password
     params[:user][:password_confirmation] = random_user_password
     create
+  end
+
+  def attach_files user
+    user.patrimonial_balance = params[:user][:patrimonial_balance]
+    user.dre_file = params[:user][:dre_file]
+    user.social_contract = params[:user][:social_contract]
+    user.business_licence = params[:user][:business_licence]
+    user.cnpj_file = params[:user][:cnpj_file]
+    # byebug
   end
 
 
@@ -76,7 +86,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj)
+      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj, :earnings_type, :earnings_range, :patrimonial_balance, :dre_file, :social_contract, :business_licence, :cnpj_file, :personal_file)
     end
   end
 

@@ -1,0 +1,21 @@
+<%=@message%>
+<br>
+<% report = InvoicesHelper.generate_xml_report(@invoices,params[:id],params[:month]) %>
+
+<div class="jumbotron" style="width: 80%; margin: 0 auto; text-align: center;">
+  <h2>Relatório:</h2>
+  <br>
+  <p>Empresa: <%=report[:company_name]%></p>
+  <p>Mês: <%=report[:month]%></p>
+  <%if params[:type] == 'out'%><p>Notas faltando: <%=report[:missing_invoices].count%></p><%end%>
+  <%if params[:type] == 'out'%><p>Maior Nº: <%=report[:greatest_number]%></p><%end%>
+  <p>Valor total das notas: <%=report[:price]%></p>
+</div>
+<br>
+
+<% @invoices.each do |f| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= link_to f.invoice_file.file.filename, f.invoice_file.url %>
+  <!-- : <a href="/invoices/report/individual/<%=f.id%>">Relatório Individual</a> -->
+  <br>
+<% end %>

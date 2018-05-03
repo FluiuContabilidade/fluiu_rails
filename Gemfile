@@ -44,10 +44,12 @@ gem 'byebug'
 
 ## Gem to radomly generate user passwords
 gem 'passgen', '~> 1.0', '>= 1.0.2'
-
-## Heroku email setup
+##
+gem 'carrierwave', '~> 1.0'
+##
+gem "rails_best_practices"
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sendgrid-ruby'
-
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,6 +57,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7'
+  gem "factory_bot_rails"
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do

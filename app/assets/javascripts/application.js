@@ -14,4 +14,6 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require notify
+// require notifier
 //= require_tree .

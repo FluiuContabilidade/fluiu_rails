@@ -12,9 +12,26 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def create
+  end
+
   def destroy
     User.find(params[:id]).destroy
     redirect_to '/users/index'
   end
+
+  def invoices_index
+    @months = User.find(params[:id]).user_invoice_months
+    @id = params[:id]
+  end
+
+  def files
+    @user = User.find(params[:id])
+  end
+
+  def add_das
+    @accounting_info = AccountingInfo.new()
+  end
+
 
 end

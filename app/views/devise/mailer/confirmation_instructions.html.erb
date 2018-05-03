@@ -5,4 +5,4 @@
 <p><%= link_to 'Confirme minha conta', confirmation_url(@resource, confirmation_token: @token) %></p>
 
 <p> Após a confirmação, você deve fazer o processo de redefinição de senha clicando no link abaixo. </p>
-<a href="http://localhost:3000/users/password/new">Redefinição de senha</a>
+<p><%= link_to 'Redefinir minha senha.', new_user_password_url  %></p>

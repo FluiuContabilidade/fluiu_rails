@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
 
     get '/:id/invoices_index', to: 'users#invoices_index'
+    get '/:id/my_files', to: 'users#files'
+    get '/:id/add_das', to: 'users#add_das'
+  end
+
+  scope :accounting_info do
+    get '/', to: 'accounting_infos#new'
   end
 
   devise_scope :user do

@@ -1,7 +1,7 @@
 @import "./base/variables";
 
 .login-component {
-  width: 50%;
+  width: 35%;
 
   margin: 0 auto;
   margin-top: 4em;
@@ -11,8 +11,9 @@
   .logo {
     display: grid;
 
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
+    margin-top: 2em;
 
     .resize-image {
       display: flex;
@@ -20,7 +21,7 @@
       width: 60%;
 
       margin: 0 auto;
-      margin-top: 1em;
+      margin-top: 2em;
       margin-bottom: 2em;
     }
   }
@@ -28,7 +29,7 @@
   .lc-field-set {
     width: 90%;
     margin: 0 auto;
-    margin-top: 2em;
+    margin-top: 1em;
 
     &.-margin-bottom {
       margin-bottom: 4em;
@@ -44,8 +45,8 @@
 
     >.lc-text-field {
       display: flex;
-
       width: 100%;
+      margin: 0 auto;
       border-width: 1px;
       padding-left: 2em;
       border-color: #9E9E9E;
@@ -54,17 +55,17 @@
     }
 
     >.lc-button {
-      width: 100%;
+
+      width: 50%;
       text-align: center;
       font-family: $roboto;
       color: white;
-      font-size: 2em;
-      font-weight: normal;
+      font-size: 1.5em;
 
       background-color: $cyan;
       color: white;
       border: none;
-      height: 3em;
+      height: 2em;
 
     }
   }

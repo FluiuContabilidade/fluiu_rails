@@ -1,0 +1,2 @@
+module AccountingInfoHelper
+end

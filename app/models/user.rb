@@ -7,8 +7,15 @@ class User < ApplicationRecord
 
  enum role: [ :client, :agent, :admin], _suffix: true
 
-
  has_many :invoices
+ has_many :accounting_infos
+
+ mount_uploader :patrimonial_balance, UserFileUploader
+ mount_uploader :dre_file, UserFileUploader
+ mount_uploader :social_contract, UserFileUploader
+ mount_uploader :business_licence, UserFileUploader
+ mount_uploader :cnpj_file, UserFileUploader
+ mount_uploader :personal_file, UserFileUploader
 
  def user_invoice_months
    months = []

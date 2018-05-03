@@ -25,5 +25,13 @@ class UsersController < ApplicationController
     @id = params[:id]
   end
 
+  def files
+    @user = User.find(params[:id])
+  end
+
+  def add_das
+    @accounting_info = AccountingInfo.new()
+  end
+
 
 end

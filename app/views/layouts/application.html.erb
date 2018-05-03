@@ -5,10 +5,19 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--Start of Zendesk Chat Script-->
+    <script type="text/javascript">
+      window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+      d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+      _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+      $.src="https://v2.zopim.com/?5bqiInqfUM1XpajZxDFoAqYm59O3E76l";z.t=+new Date;$.
+      type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+    </script>
+<!--End of Zendesk Chat Script-->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   </head>
 
-  <body onload="<%flash.each do |key, value|%> $.notify('<%=value%>', <%=key%>); <%end%>">
+  <body onload="<%flash.each do |key, value|%> $.notify('<%=value%>', '<%=key%>'); <%end%>">
     <% if current_user %>
       <nav class="navbar-component">
         <div class="app-nav-container">
@@ -19,15 +28,6 @@
             <a style="text-decoration: none;"href="/users/index">Usuários</a>
           </div>
         </div>
-        <!-- <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/" style="color: white;">Fluiu Contabilidade</a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li><a href="/users/index" style="color: white;">Clientes</a></li>
-            <li><a href="/signout" style="color: white;">Sair</a></li>
-          </ul>
-        </div> -->
       </nav>
     <%end%>
     <%= yield %>

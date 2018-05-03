@@ -4,12 +4,25 @@ class InvoicesController < ApplicationController
 
   def accounting_info
     @user = User.find(params[:id])
+    @accounting_info = AccountingInfo.new()
   end
 
   def add_monthly_accounting_info
-    params[:attachment][:files].each do |file|
-      create_invoice ({user_id: params[:user_id], file: file})
+    a = AccountingInfo.new(canceled_invoices: params[:accounting_info][:canceled_invoices],
+      paycheck_changes: params[:accounting_info][:paycheck_changes],
+      month: Time.now.strftime('%Y-%m'), user_id: current_user.id)
+    a.financial_spreadsheet = params[:accounting_info][:financial_spreadsheet]
+    a.save
+
+    if params[:attachment] != nil
+      params[:attachment][:files].each do |file|
+        create_invoice ({user_id: params[:user_id], file: file})
+      end
     end
+
+    redirect_to "/home"
+    flash[:success] = "Operação Efetuada com Sucesso!"
+    # return
   end
 
   def create_invoice(invoice_params)

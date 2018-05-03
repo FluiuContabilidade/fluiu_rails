@@ -68,6 +68,5 @@ class Invoice < ApplicationRecord
     return false if (cfop.first == '5102') or (cfop.first == '6102') or (cfop.first == '7102')
     return true if (cfop.first == '5933') or (cfop.first == '6933') or (cfop.first == '7933')
   end
-
-
+  
 end

@@ -120,7 +120,4 @@ class User < ApplicationRecord
    return 0
  end
 
-
-
-
 end

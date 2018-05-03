@@ -7,5 +7,7 @@ FactoryBot.define do
     email {Faker::Internet.email}
     password {Passgen::generate}
     invoices []
+    earnings_type 1
+    earnings_range 1
   end
 end

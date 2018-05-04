@@ -16,6 +16,7 @@ class User < ApplicationRecord
  mount_uploader :business_licence, UserFileUploader
  mount_uploader :cnpj_file, UserFileUploader
  mount_uploader :personal_file, UserFileUploader
+ mount_uploader :das_file, UserFileUploader
 
  def user_invoice_months
    months = []
@@ -119,8 +120,5 @@ class User < ApplicationRecord
    end
    return 0
  end
-
-
-
 
 end

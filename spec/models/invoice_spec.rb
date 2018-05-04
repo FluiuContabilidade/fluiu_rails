@@ -47,41 +47,52 @@ RSpec.describe Invoice, type: :model do
     @empty_collection = []
   end
 
-  it "sucessfully get xml content by tag (single)" do
-    result = Invoice.get_xml_content_by_tag('nNF', @valid_xml_file.to_xml)
-    result2 = Invoice.get_xml_content_by_tag('vNF', @valid_xml_file.to_xml )
+  describe ".get_xml_content_by_tag" do
 
-    expect(result.first).to eq('474423')
-    expect(result2.first).to eq('1.0')
+    it 'return when tag exists' do
+      result = Invoice.get_xml_content_by_tag('nNF', @valid_xml_file.to_xml)
+      expect(result.first).to eq('474423')
+    end
+
+    it 'returns nil when tag does not exist' do
+      error = Invoice.get_xml_content_by_tag('IDontHaveThisTag', @valid_xml_file.to_xml)
+      expect(error.first).to eq(nil)
+    end
   end
 
-  it 'returns nil searching for inexistent tag' do
-    error = Invoice.get_xml_content_by_tag('IDontHaveThisTag', @valid_xml_file.to_xml)
-    expect(error.first).to eq(nil)
+
+  describe ".missing_invoices" do
+
+    it 'returns maximum invoice number when rmaxflag is true' do
+        expect(Invoice.missing_invoices(@valid_xml_collection, true)).to eq(20)
+    end
+
+    it 'returns if collection is valid when flag is false' do
+      expect(Invoice.missing_invoices(@valid_xml_collection, false)).to eq([])
+      expect(Invoice.missing_invoices(@invalid_xml_collection, false)).to eq([21,22,23,24])
+      expect(Invoice.missing_invoices(@empty_collection, false)).to eq([])
+    end
+
   end
 
-  it "successfully determines missing invoices" do
-    expect(Invoice.missing_invoices(@valid_xml_collection, false)).to eq([])
-    expect(Invoice.missing_invoices(@invalid_xml_collection, false)).to eq([21,22,23,24])
-    expect(Invoice.missing_invoices(@empty_collection, false)).to eq([])
+  describe ".price_sum" do
+    it "returns sum of invoices" do
+      expect(Invoice.price_sum(@valid_xml_collection)).to eq(11.0)
+    end
   end
 
-  it "returns greatest invoice number" do
-    expect(Invoice.missing_invoices(@valid_xml_collection, true)).to eq(20)
+  describe ".entry_type?" do
+    it "returns if invoice type is of entry type" do
+      expect(Invoice.entry_type?(@valid_xml_file.to_xml, '34534220000117')).to be(true)
+      expect(Invoice.entry_type?(@valid_xml_file.to_xml, '30120310231203')).to be(false)
+      expect(Invoice.entry_type?(@invalid_xml_file, '34534220000117')).to be(false)
+    end
   end
 
-  it "returns sum of invoice pricing" do
-    expect(Invoice.price_sum(@valid_xml_collection)).to eq(11.0)
-  end
-
-  it "returns if invoice is of entry type" do
-    expect(Invoice.entry_type?(@valid_xml_file.to_xml, '34534220000117')).to be(true)
-    expect(Invoice.entry_type?(@valid_xml_file.to_xml, '30120310231203')).to be(false)
-    expect(Invoice.entry_type?(@invalid_xml_file, '34534220000117')).to be(false)
-  end
-
-  it "returns if invoice is a local invoice" do
-    expect(Invoice.is_a_local_invoice? @valid_xml_file.to_xml).to be(true)
+  describe ".is_a_local_invoice?" do
+    it "returns if invoice is of local type" do
+      expect(Invoice.is_a_local_invoice? @valid_xml_file.to_xml).to be(true)
+    end
   end
 
 

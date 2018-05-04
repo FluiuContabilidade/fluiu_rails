@@ -9,5 +9,6 @@ FactoryBot.define do
     invoices []
     earnings_type 1
     earnings_range 1
+    # is_active true
   end
 end

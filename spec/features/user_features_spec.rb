@@ -22,3 +22,22 @@ describe "the signin process", type: :feature do
   end
 
 end
+
+describe 'adding DAS file to user', type: :feature do
+
+  before :each do
+    @user = FactoryBot.build(:user)
+    @user.confirm
+    login_as(@user, :scope => :user)
+  end
+
+
+  it "successfully submit DAS file attachment form" do
+    url = "users/#{@user.id}/add_das"
+    visit url
+    attach_file('user[das_file]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    click_button 'Enviar'
+    expect(@user.das_file).not_to be(nil)
+  end
+
+end

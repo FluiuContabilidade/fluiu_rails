@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    byebug
     user = User.find(params[:id])
     user.update_attributes(user_params)
 
@@ -44,9 +43,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    user_params.permit(:das_file)
-  end
-
-
+    def user_params
+      params.require(:user).permit(:das_file)
+    end
 end

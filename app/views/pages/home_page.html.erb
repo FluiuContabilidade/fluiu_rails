@@ -1,6 +1,8 @@
 <div class="home-page-container">
   <% if @message != nil %>
-    <p> <%=@message%> </p>
+    <div id="alertdiv" class="alert alert-danger" role="alert" onclick="$('#alertdiv').fadeOut();">
+      <p> <%=@message%> </p>
+    </div>
   <% end %>
 
   <a href="users/<%=@id%>/accounting_info" class="info-box">

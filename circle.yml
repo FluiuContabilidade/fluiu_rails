@@ -2,6 +2,6 @@ deployment:
   staging:
     branch: master
       post:
-        - heroku run rails db:migrate --app fluiu-contabilidade
+        -heroku run rails db:migrate --app fluiu-contabilidade
     heroku:
       appname: fluiu-contabilidade

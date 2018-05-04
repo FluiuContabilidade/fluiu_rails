@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only => [:edit]
 
   def index
     @users = User.all
@@ -10,6 +11,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+  end
+
+  def edit
+    byebug
+    user = User.find(params[:id])
+    user.update_attributes(user_params)
+
+    redirect_to "/users/index"
+    flash[:success] = "Operação Realizada com sucesso!"
   end
 
   def create
@@ -30,7 +40,12 @@ class UsersController < ApplicationController
   end
 
   def add_das
-    @accounting_info = AccountingInfo.new()
+    @user = User.find(params[:id])
+  end
+
+  private
+  def user_params
+    user_params.permit(:das_file)
   end
 
 

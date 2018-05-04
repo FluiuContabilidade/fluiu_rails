@@ -41,6 +41,10 @@ class User < ApplicationRecord
    return (Invoice.price_sum(invoices))
  end
 
+ def has_month_invoices? month
+   return user_invoice_months.include?(month)
+ end
+
  def get_company_tax_percentage
    if(earnings_type == "1")
      case earnings_range

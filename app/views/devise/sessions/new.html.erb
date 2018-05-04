@@ -29,17 +29,17 @@
         <div class="logo">
           <%= image_tag("LogoFluiuCiano.png", class:'resize-image',:alt => "logo") %>
         </div>
-        <div class="lc-field-set">
+        <div id="email-field" class="lc-field-set">
           <label for="email" class="lc-label">E-mail</label>
           <%= f.email_field :email, id:'email', autofocus: true, class:'lc-text-field'%>
         </div>
-        <div class="lc-field-set">
+        <div class="lc-field-set" id='password-field'>
           <label for="password" class="lc-label">Senha</label>
           <%= f.password_field :password, id: 'password', class:'lc-text-field'%>
         </div>
-        <div class="lc-field-set" style="padding-bottom: 4em;">
+        <div class="lc-field-set" style="padding-bottom: 4em;" id='bl-fields'>
           <!-- <button type="button" name="button" onclick="$.notify('Hello World');">oi</button> -->
-            <%= f.submit "Entrar", class:'lc-button'%>
+            <%= f.submit "Entrar", class:'lc-button', id:'login-submit-button'%>
             <br>
             <br>
             <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

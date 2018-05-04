@@ -1,11 +1,9 @@
-<%= form_for @accounting_info, url: 'accounting_info', html: { method: :post } do |f| %>
+<%= form_for @user, url: 'edit', html: { method: :post } do |f| %>
   <div class="" style="width:60%; margin:0 auto;">
-
     <div class="form-group">
       <%= f.label :das_file, 'DAS'%>
-      <%= f.file_field :das_file %>
+      <%= f.file_field :das_file%>
     </div>
-
     <%= f.submit "Enviar", class:'btn btn-default' %>
   </div>
 <% end %>

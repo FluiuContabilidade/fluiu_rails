@@ -16,6 +16,7 @@ class User < ApplicationRecord
  mount_uploader :business_licence, UserFileUploader
  mount_uploader :cnpj_file, UserFileUploader
  mount_uploader :personal_file, UserFileUploader
+ mount_uploader :das_file, UserFileUploader
 
  def user_invoice_months
    months = []
@@ -38,6 +39,10 @@ class User < ApplicationRecord
    end
 
    return (Invoice.price_sum(invoices))
+ end
+
+ def has_month_invoices? month
+   return user_invoice_months.include?(month)
  end
 
  def get_company_tax_percentage
@@ -119,8 +124,5 @@ class User < ApplicationRecord
    end
    return 0
  end
-
-
-
 
 end

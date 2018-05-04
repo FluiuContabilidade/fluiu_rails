@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/delete/:id', to: 'users#destroy'
     get '/:id/accounting_info', to: 'invoices#accounting_info'
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
+    post '/:id/edit', to:'users#edit'
 
     get '/:id/invoices_index', to: 'users#invoices_index'
     get '/:id/my_files', to: 'users#files'

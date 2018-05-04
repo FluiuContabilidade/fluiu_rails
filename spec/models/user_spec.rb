@@ -27,5 +27,28 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.has_month_invoices?' do
+    before :each do
+      invoices = [FactoryBot.build(:invoice, month: '01-2018'), FactoryBot.build(:invoice, month: '02-2018'), FactoryBot.build(:invoice, month: '03-2018')]
+      @user = FactoryBot.build(:user, invoices: invoices)
+    end
+
+    it "returns true if user did not sent monthly invoices" do
+      current_month = '2018-05'
+      expect(@user.has_month_invoices?(current_month)).to be(false)
+    end
+
+    it "returns false if user sent monthly invoices" do
+      current_month = '02-2018'
+      expect(@user.has_month_invoices?(current_month)).to be(true)
+    end
+
+    it "returns false if user does not have invoices" do
+      user = FactoryBot.build(:user)
+      expect(user.has_month_invoices?('any_date')).to be(false)
+    end
+  end
+
+  
 
 end

@@ -46,7 +46,6 @@ gem 'byebug'
 gem 'passgen', '~> 1.0', '>= 1.0.2'
 ##
 gem 'carrierwave', '~> 1.0'
-gem 'cloudinary'
 ##
 gem "rails_best_practices"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'

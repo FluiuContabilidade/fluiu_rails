@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home_page'
   get 'home', to: 'pages#home_page'
-
+  get 'test', to: 'pages#test'
 
   ## USERS
 

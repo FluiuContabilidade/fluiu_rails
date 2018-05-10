@@ -9,4 +9,13 @@ class PagesController < ApplicationController
     @tax_extimative = current_user.get_company_tax_percentage
   end
 
+  def test
+    require 'capybara/rails'
+    session = Capybara::Session.new(:selenium_chrome_headless)
+    session.visit('http://portalservicos.jcdf.mdic.gov.br/Portal/pages/consultaProcesso.jsf')
+    session.fill_in('protocolo', with: current_user.protocol)
+    session.click_link('Pesquisar')
+    redirect_to '/home'
+  end
+
 end

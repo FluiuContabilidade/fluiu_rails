@@ -1,5 +1,9 @@
 current directory: /home/gabriel/Fluiu/fluiu_rails/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.5/ext/unf_ext
+<<<<<<< HEAD
 /usr/bin/ruby2.3 -r ./siteconf20180508-3588-eib800.rb extconf.rb
+=======
+/usr/bin/ruby2.3 -r ./siteconf20180508-31221-1ow1qob.rb extconf.rb
+>>>>>>> 117d37f330dc051457c0ea60e0c7de17168a9135
 checking for main() in -lstdc++... yes
 creating Makefile
 
@@ -17,4 +21,8 @@ linking shared-object unf_ext.so
 
 current directory: /home/gabriel/Fluiu/fluiu_rails/vendor/cache/ruby/2.3.0/gems/unf_ext-0.0.7.5/ext/unf_ext
 make "DESTDIR=" install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 unf_ext.so ./.gem.20180508-3588-5yy08q
+=======
+/usr/bin/install -c -m 0755 unf_ext.so ./.gem.20180508-31221-63xu49
+>>>>>>> 117d37f330dc051457c0ea60e0c7de17168a9135

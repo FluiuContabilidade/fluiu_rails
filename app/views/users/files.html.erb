@@ -1,23 +1,62 @@
 <div style="width:80%; margin: 0 auto;">
   <h2>Meus Arquivos</h2>
   <br>
-  <div class="form-group">
-    <%= link_to "Balanço Patrimonial", @user.patrimonial_balance.url %>
+
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.patrimonial_balance.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;"> Balanço Patrimonial </p>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= link_to "DRE", @user.dre_file.url %>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.dre_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;"> DRE </p>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= link_to "Contrato Social", @user.social_contract.url %>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.social_contract.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">Contrato Social</p>
+    </div>
+      <!-- <%= link_to "Contrato Social", @user.social_contract.url %> -->
   </div>
 
-  <div class="form-group">
-    <%= link_to "Alvará de Funcionamento", @user.business_licence.url %>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.business_licence.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">Alvará de Funcionamento</p>
+    </div>
+    <!-- <%= link_to "Alvará de Funcionamento", @user.business_licence.url %> -->
+  </div>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.cnpj_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">CNPJ</p>
+    </div>
+    <!-- <%= link_to "CNPJ", @user.cnpj_file.url %> -->
+  </div>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.das_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">DAS</p>
+    </div>
+    <!-- <%= link_to "DAS", @user.das_file.url %> -->
   </div>
 
-  <div class="form-group">
-    <%= link_to "CNPJ", @user.cnpj_file.url %>
-  </div>
+
 </div>

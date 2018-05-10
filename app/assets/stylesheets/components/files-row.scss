@@ -1,0 +1,30 @@
+.file-container {
+  display: inline-block;
+
+  margin-right: 1em;
+  width: 15%;
+  height: 20vh;
+  // background-color: red;
+
+  .file-icon {
+    // display: block;
+    height: 70%;
+    width: 100%;
+    // background-color: green;
+    .icon {
+      display: block;
+      height: 90%;
+      width: 100%;
+    }
+  }
+
+  .file-name{
+    // display: block;
+    height: 30%;
+    width: 100%;
+    text-align: center;
+    // background-color: blue;
+  }
+
+
+}

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  resources :appointments
+  # resources :appointments
   # devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, controllers: { registrations: "registrations" }
+
+  scope :appointments do
+    get '/', to: 'appointments#index', as: :appointments
+    get '/new', to: 'appointments#new', as: :new_appointment
+    post '/new', to: 'appointments#create'
+  end
 
   scope :users do
     get '/index', to:'users#index'

@@ -8,7 +8,8 @@ RSpec.describe Appointment, type: :model do
       @events = [FactoryBot.create(:appointment, date: '02'), FactoryBot.create(:appointment, date: '03'),
       FactoryBot.create(:appointment, date: '04/02'), FactoryBot.create(:appointment, date: '05/02'),
       FactoryBot.create(:appointment, date: '06/03'), FactoryBot.create(:appointment, date: '33'),
-      FactoryBot.create(:appointment, date: '07/01,03,05'), FactoryBot.create(:appointment, date: '08/02,07,12') ]
+      FactoryBot.create(:appointment, date: '07/01,03,05'), FactoryBot.create(:appointment, date: '08/02,07,12'),
+      FactoryBot.create(:appointment, date: 'this date does not make any sense.') ]
     end
 
     it 'returns events that are happening this month' do

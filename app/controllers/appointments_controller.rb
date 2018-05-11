@@ -28,11 +28,11 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
-        format.json { render :show, status: :created, location: @appointment }
+        flash[:success] = 'Operação realizada com sucesso!'
+        redirect_to '/home'
       else
-        format.html { render :new }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        flash[:error] = 'Um erro ocorreu.'
+        redirect_to '/home'
       end
     end
   end
@@ -42,11 +42,11 @@ class AppointmentsController < ApplicationController
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @appointment }
+        flash[:success] = 'Operação realizada com sucesso!'
+        redirect_to '/home'
       else
-        format.html { render :edit }
-        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        flash[:error] = 'Um erro ocorreu.'
+        redirect_to '/home'
       end
     end
   end

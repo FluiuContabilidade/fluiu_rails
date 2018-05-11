@@ -1,31 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Itens do Calendário</h1>
 
-<h1>Appointments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Item date</th>
-      <th>Item type</th>
-      <th>Item description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @appointments.each do |appointment| %>
+  <table class="table">
+    <thead class="thead-dark">
       <tr>
-        <td><%= appointment.item_date %></td>
-        <td><%= appointment.item_type %></td>
-        <td><%= appointment.item_description %></td>
-        <td><%= link_to 'Show', appointment %></td>
-        <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
-        <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th scope="col">Dia do Evento</th>
+        <th scope="col">Responsável</th>
+        <th scope="col">Descrição do Evento</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+        <tr>
+          <td><%= appointment.item_date %></td>
+          <% if appointment.item_type == "client" %>
+            <td>Cliente</td>
+          <% else %>
+            <td>Fluiu</td>
+          <%end %>
+          <td><%= appointment.item_description %></td>
+          <td><%= link_to 'Editar', edit_appointment_path(appointment), class: 'btn btn-primary'%></td>
+          <td><%= link_to 'Deletar', appointment, method: :delete,  data: { confirm: 'Você  tem certeza?' }, class: 'btn btn-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Appointment', new_appointment_path %>
+  <br>
+
+  <%= link_to 'Novo Item', new_appointment_path, class: 'btn btn-primary' %>
+</div>

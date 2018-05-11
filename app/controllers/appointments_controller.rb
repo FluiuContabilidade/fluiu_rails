@@ -40,14 +40,12 @@ class AppointmentsController < ApplicationController
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update
-    respond_to do |format|
-      if @appointment.update(appointment_params)
-        flash[:success] = 'Operação realizada com sucesso!'
-        redirect_to '/home'
-      else
-        flash[:error] = 'Um erro ocorreu.'
-        redirect_to '/home'
-      end
+    if @appointment.update(appointment_params)
+      flash[:success] = 'Operação realizada com sucesso!'
+      redirect_to '/home'
+    else
+      flash[:error] = 'Um erro ocorreu.'
+      redirect_to '/home'
     end
   end
 

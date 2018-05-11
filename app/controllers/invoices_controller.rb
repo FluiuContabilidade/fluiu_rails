@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   include InvoicesHelper
-  skip_before_action :verify_authenticity_token, :only => [:add_monthly_accounting_info]
+  skip_before_action :verify_authenticity_token, :only => [:add_monthly_accounting_info, :update, :edit]
 
   def accounting_info
     @user = User.find(params[:id])

@@ -1,6 +1,13 @@
 class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token, :only => [:create]
 
+  def calendar
+    @appointments = Appointment.get_monthly_events(Time.now.month).sort  {|x,y| x.item_date[0..1] <=> y.item_date[0..1]}
+    @client = @appointments.reject { |a| a.item_type != "client" }
+    @agent = @appointments.reject { |a| a.item_type != "agent" }
+    # byebug
+  end
   # GET /appointments
   # GET /appointments.json
   def index
@@ -25,15 +32,12 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
-
-    respond_to do |format|
-      if @appointment.save
-        flash[:success] = 'Operação realizada com sucesso!'
-        redirect_to '/home'
-      else
-        flash[:error] = 'Um erro ocorreu.'
-        redirect_to '/home'
-      end
+    if @appointment.save
+      flash[:success] = 'Operação realizada com sucesso!'
+      redirect_to '/home'
+    else
+      flash[:error] = 'Um erro ocorreu.'
+      redirect_to '/home'
     end
   end
 

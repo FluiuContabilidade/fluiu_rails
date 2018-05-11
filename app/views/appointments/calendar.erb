@@ -1,0 +1,12 @@
+<div style="width: 90%; margin: 0 auto;">
+  <h2> Responsabilidades Fluiu </h2>
+  <br>
+  <% @agent.each do |a| %>
+    <p> <b>Dia <%=a.item_date[0..1]%>:</b><%= a.item_description %></p>
+  <% end %>
+  <h2> Responsabilidades Cliente </h2>
+  <br>
+  <% @client.each do |c| %>
+    <p> <b>Dia <%=c.item_date[0..1]%>:</b><%= c.item_description %></p>
+  <% end %>
+</div>

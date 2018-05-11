@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   scope :appointments do
     get '/', to: 'appointments#index', as: :appointments
     get '/new', to: 'appointments#new', as: :new_appointment
-    post '/new', to: 'appointments#create'
     get '/edit/:id', to: 'appointments#edit', as: :edit_appointment
+    get '/calendar', to: 'appointments#calendar', as: :calendar
+    post '/new', to: 'appointments#create'
     post '/edit/:id', to: 'appointments#update', as: :update_appointment
     delete '/delete/:id', to: 'appointments#destroy', as: :appointment
   end

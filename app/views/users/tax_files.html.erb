@@ -1,0 +1,51 @@
+<div style="width:80%; margin: 0 auto;">
+  <h2>Impostos</h2>
+  <br>
+
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.das_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;"> DAS </p>
+    </div>
+  </div>
+
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.fgts.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;"> FGTS </p>
+    </div>
+  </div>
+
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.fau.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">FAU</p>
+    </div>
+      <!-- <%= link_to "Contrato Social", @user.social_contract.url %> -->
+  </div>
+
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.tributary_sub.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">Substituição Tributária</p>
+    </div>
+    <!-- <%= link_to "Alvará de Funcionamento", @user.business_licence.url %> -->
+  </div>
+  <div class="file-container">
+    <div class="file-icon">
+      <a href="<%=@user.payment_installments.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    </div>
+    <div class="file-name">
+      <p style="display: grid;">Parcelamentos</p>
+    </div>
+    <!-- <%= link_to "CNPJ", @user.cnpj_file.url %> -->
+  </div>
+</div>

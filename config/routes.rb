@@ -7,13 +7,16 @@ Rails.application.routes.draw do
     get '/index', to:'users#index'
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
-    get '/:id/accounting_info', to: 'invoices#accounting_info'
-    post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
-    post '/:id/edit', to:'users#edit'
 
     get '/:id/invoices_index', to: 'users#invoices_index'
     get '/:id/my_files', to: 'users#files'
     get '/:id/add_das', to: 'users#add_das'
+    get '/:id/tax_files', to: 'users#tax_files'
+    post '/:id/edit', to:'users#edit'
+
+    #fix this - BAD modularization
+    get '/:id/accounting_info', to: 'invoices#accounting_info'
+    post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end
 
   scope :accounting_info do

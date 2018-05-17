@@ -16,9 +16,11 @@
     <tbody>
       <% @appointments.each do |appointment| %>
       <tr>
-        <td><%=appointment.owner%></td>
+        <td><% if appointment.owner == 'client'%> Cliente <%else%> Fluiu <%end%></td>
         <td><%=appointment.day%></td>
         <td><%=appointment.event%></td>
+        <td><a href="appointments/<%=appointment.id%>/edit" class="btn btn-primary">Editar</a></td>
+        <td><a href="appointments/<%=appointment.id%>/delete" class="btn btn-danger">Deletar</a></td>
       </tr>
       <% end %>
     </tbody>

@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create, :update]
+  before_action :set_appointment, only: [:edit, :update]
 
   def index
     @appointments = Appointment.all
@@ -18,6 +20,18 @@ class AppointmentsController < ApplicationController
     redirect_to '/appointments'
   end
 
+  def update
+    @appointment.update_attributes(appointment_params)
+    flash[:success] = 'Operação efetuada com sucesso!'
+    redirect_to '/appointments'
+  end
+
+  def edit
+  end
+
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
 
   private
     def appointment_params

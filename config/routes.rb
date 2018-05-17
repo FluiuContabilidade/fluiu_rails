@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     get '', to:'appointments#index'
     get '/new', to: 'appointments#new'
     post '/create', to: 'appointments#create'
+
+    get ':id/edit', to: 'appointments#edit'
+    patch ':id/edit', to: 'appointments#update'
   end
 
   scope :accounting_info do

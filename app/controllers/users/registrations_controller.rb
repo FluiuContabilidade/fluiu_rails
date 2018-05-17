@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :verify_authenticity_token, :only => [:custom_account_creation]
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -86,7 +86,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj, :earnings_type, :earnings_range, :patrimonial_balance, :dre_file, :social_contract, :business_licence, :cnpj_file, :personal_file)
+      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj, :earnings_type, :earnings_range, :patrimonial_balance, :dre_file, :social_contract, :business_licence, :cnpj_file, :personal_file, :protocol)
     end
   end
 

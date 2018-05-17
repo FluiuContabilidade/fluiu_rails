@@ -51,12 +51,15 @@ gem "rails_best_practices"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sendgrid-ruby'
 
+gem 'watir', '~> 6.0'
+gem 'selenium-webdriver'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'capybara', '~> 2.13'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7'
   gem "factory_bot_rails"
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'

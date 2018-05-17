@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180503213655) do
+ActiveRecord::Schema.define(version: 20180517155015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20180503213655) do
     t.string "month"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_accounting_infos_on_user_id"
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "item_date"
+    t.integer "item_type"
+    t.string "item_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -83,6 +91,12 @@ ActiveRecord::Schema.define(version: 20180503213655) do
     t.string "cf_file"
     t.string "personal_file"
     t.string "das_file"
+    t.string "protocol"
+    t.string "fgts"
+    t.string "inss"
+    t.string "fau"
+    t.string "tributary_sub"
+    t.string "payment_installments"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

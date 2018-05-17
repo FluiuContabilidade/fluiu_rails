@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:edit]
+  before_action :set_user, only: [:add_tax_files, :edit, :show, :files, :tax_files, :add_das]
 
   def index
     @users = User.all
@@ -10,13 +11,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    user = User.find(params[:id])
-    user.update_attributes(user_params)
+    if params[:user] == nil
+      flash[:danger] = 'Um erro ocorreu. Operação não realizada.'
+      redirect_to '/users/index'
+      return
+    end
 
+    @user.update_attributes(user_params)
     redirect_to "/users/index"
     flash[:success] = "Operação Realizada com sucesso!"
   end
@@ -35,15 +39,20 @@ class UsersController < ApplicationController
   end
 
   def files
-    @user = User.find(params[:id])
   end
 
-  def add_das
+  def tax_files
+  end
+
+  def add_tax_files
+  end
+
+  def set_user
     @user = User.find(params[:id])
   end
 
   private
     def user_params
-      params.require(:user).permit(:das_file)
+      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments)
     end
 end

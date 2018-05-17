@@ -17,6 +17,11 @@ class User < ApplicationRecord
  mount_uploader :cnpj_file, UserFileUploader
  mount_uploader :personal_file, UserFileUploader
  mount_uploader :das_file, UserFileUploader
+ mount_uploader :fgts, UserFileUploader
+ mount_uploader :inss, UserFileUploader
+ mount_uploader :fau, UserFileUploader
+ mount_uploader :tributary_sub, UserFileUploader
+ mount_uploader :payment_installments, UserFileUploader
 
  def user_invoice_months
    months = []

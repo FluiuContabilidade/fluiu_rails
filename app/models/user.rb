@@ -23,19 +23,6 @@ class User < ApplicationRecord
  mount_uploader :tributary_sub, UserFileUploader
  mount_uploader :payment_installments, UserFileUploader
 
- def self.wtest
-   browser = Watir::Browser.new :chrome
-
-   browser.goto 'google.com'
-   browser.text_field(title: 'Search').set 'Hello World!'
-   browser.button(type: 'submit').click
-
-   puts browser.title
-   # => 'Hello World! - Google Search'
-   browser.quit
-
- end
-
  def user_invoice_months
    months = []
    invoices.group_by(&:month).each do |key,value|

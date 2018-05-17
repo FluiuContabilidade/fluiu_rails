@@ -1,0 +1,30 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Eventos</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Responsável</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Evento</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+      <tr>
+        <td><%=appointment.owner%></td>
+        <td><%=appointment.day%></td>
+        <td><%=appointment.event%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <a href="/appointments/new" class:'btn btn-primary'> Cadastrar Evento </a>
+  </div>
+</div>

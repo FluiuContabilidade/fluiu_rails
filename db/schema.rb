@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517155015) do
+ActiveRecord::Schema.define(version: 20180517180313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20180517155015) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.string "item_date"
-    t.integer "item_type"
-    t.string "item_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "day"
+    t.string "event"
+    t.integer "owner"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -42,21 +42,9 @@ ActiveRecord::Schema.define(version: 20180517155015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "invoice_file"
-    t.bigint "monthly_report_id"
     t.bigint "accounting_info_id"
     t.index ["accounting_info_id"], name: "index_invoices_on_accounting_info_id"
-    t.index ["monthly_report_id"], name: "index_invoices_on_monthly_report_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
-  end
-
-  create_table "monthly_reports", force: :cascade do |t|
-    t.string "entry_price"
-    t.string "out_price"
-    t.bigint "user_id"
-    t.string "month"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_monthly_reports_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,7 +70,6 @@ ActiveRecord::Schema.define(version: 20180517155015) do
     t.datetime "confirmation_sent_at"
     t.string "earnings_type"
     t.string "earnings_range"
-    t.string "user_file"
     t.string "patrimonial_balance"
     t.string "dre_file"
     t.string "social_contract"
@@ -104,7 +91,5 @@ ActiveRecord::Schema.define(version: 20180517155015) do
 
   add_foreign_key "accounting_infos", "users"
   add_foreign_key "invoices", "accounting_infos"
-  add_foreign_key "invoices", "monthly_reports"
   add_foreign_key "invoices", "users"
-  add_foreign_key "monthly_reports", "users"
 end

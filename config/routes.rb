@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end
 
+  scope :appointments do
+    get '', to:'appointments#index'
+    get '/new', to: 'appointments#new'
+    post '/create', to: 'appointments#create'
+  end
+
   scope :accounting_info do
     get '/', to: 'accounting_infos#new'
   end

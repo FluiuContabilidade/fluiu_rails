@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:edit]
-  before_action :set_user, only: [:edit, :show, :files, :tax_files, :add_das]
+  before_action :set_user, only: [:add_tax_files, :edit, :show, :files, :tax_files, :add_das]
 
   def index
     @users = User.all
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def tax_files
   end
 
-  def add_das
+  def add_tax_files
   end
 
   def set_user

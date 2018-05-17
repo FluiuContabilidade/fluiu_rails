@@ -4,7 +4,7 @@
 
   <div class="file-container">
     <div class="file-icon">
-      <a href="<%=@user.das_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      <a href="<%=@user.das_file.url%>" download><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
     </div>
     <div class="file-name">
       <p style="display: grid;"> DAS </p>
@@ -13,7 +13,7 @@
 
   <div class="file-container">
     <div class="file-icon">
-      <a href="<%=@user.fgts.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      <a href="<%=@user.fgts.url%>" download><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
     </div>
     <div class="file-name">
       <p style="display: grid;"> FGTS </p>
@@ -22,7 +22,7 @@
 
   <div class="file-container">
     <div class="file-icon">
-      <a href="<%=@user.fau.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      <a href="<%=@user.fau.url%>" download><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
     </div>
     <div class="file-name">
       <p style="display: grid;">FAU</p>
@@ -32,7 +32,7 @@
 
   <div class="file-container">
     <div class="file-icon">
-      <a href="<%=@user.tributary_sub.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      <a href="<%=@user.tributary_sub.url%>" download><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
     </div>
     <div class="file-name">
       <p style="display: grid;">Substituição Tributária</p>
@@ -41,7 +41,7 @@
   </div>
   <div class="file-container">
     <div class="file-icon">
-      <a href="<%=@user.payment_installments.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      <a href="<%=@user.payment_installments.url%>" download><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
     </div>
     <div class="file-name">
       <p style="display: grid;">Parcelamentos</p>

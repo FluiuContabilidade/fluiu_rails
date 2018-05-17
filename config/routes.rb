@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     get '/:id/invoices_index', to: 'users#invoices_index'
     get '/:id/my_files', to: 'users#files'
-    get '/:id/add_das', to: 'users#add_das'
+    get '/:id/add_tax_files', to: 'users#add_tax_files'
     get '/:id/tax_files', to: 'users#tax_files'
     post '/:id/edit', to:'users#edit'
 

@@ -14,8 +14,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user.update_attributes(user_params)
+    if params[:user] == nil
+      flash[:danger] = 'Um erro ocorreu. Operação não realizada.'
+      redirect_to '/users/index'
+      return
+    end
 
+    @user.update_attributes(user_params)
     redirect_to "/users/index"
     flash[:success] = "Operação Realizada com sucesso!"
   end

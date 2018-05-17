@@ -23,7 +23,7 @@ describe "the signin process", type: :feature do
 
 end
 
-describe 'adding DAS file to user', type: :feature do
+describe 'adding taxes file to user', type: :feature do
 
   before :each do
     @user = FactoryBot.build(:user)
@@ -32,12 +32,29 @@ describe 'adding DAS file to user', type: :feature do
   end
 
 
-  it "successfully submit DAS file attachment form" do
-    url = "users/#{@user.id}/add_das"
+  it "successfully submit tax files form" do
+    url = "users/#{@user.id}/add_tax_files"
     visit url
     attach_file('user[das_file]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    attach_file('user[fgts]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    attach_file('user[inss]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    attach_file('user[fau]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    attach_file('user[tributary_sub]', Rails.root + "spec/fixtures/files/xml_file.xml")
+    attach_file('user[payment_installments]', Rails.root + "spec/fixtures/files/xml_file.xml")
     click_button 'Enviar'
     expect(@user.das_file).not_to be(nil)
+    expect(@user.fgts).not_to be(nil)
+    expect(@user.inss).not_to be(nil)
+    expect(@user.fau).not_to be(nil)
+    expect(@user.tributary_sub).not_to be(nil)
+    expect(@user.payment_installments).not_to be(nil)
+  end
+
+  it 'submits empty form' do
+    url = "users/#{@user.id}/add_tax_files"
+    visit url
+    click_button 'Enviar'
+    expect(page).to have_content("Clientes")
   end
 
 end

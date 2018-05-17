@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
     get ':id/edit', to: 'appointments#edit'
     patch ':id/edit', to: 'appointments#update'
+    delete ':id/delete', to: 'appointments#delete', as: :appointment
   end
 
   scope :accounting_info do

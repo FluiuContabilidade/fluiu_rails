@@ -20,7 +20,7 @@
         <td><%=appointment.day%></td>
         <td><%=appointment.event%></td>
         <td><a href="appointments/<%=appointment.id%>/edit" class="btn btn-primary">Editar</a></td>
-        <td><a href="appointments/<%=appointment.id%>/delete" class="btn btn-danger">Deletar</a></td>
+        <td><%= link_to 'Deletar', appointment , method: :delete,  data: { confirm: 'Você  tem certeza?' }, class: 'btn btn-danger' %></td>
       </tr>
       <% end %>
     </tbody>

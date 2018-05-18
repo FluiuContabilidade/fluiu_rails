@@ -1,0 +1,26 @@
+<h2 style="text-align: center">Criando Evento</h2>
+<br>
+<%= form_for @appointment, url: 'create', html: { method: :post } do |f| %>
+  <div style="width: 50%; margin: 0 auto;">
+
+    <div class="form-group">
+      <p>Até o dia
+      <select  name="appointment[day]">
+        <% for i in 0..31%>
+          <option value="<%=i%>"><%=i%></option>
+        <% end %>
+      </select>
+      o usuário
+      <select name="appointment[owner]">
+        <option value="agent">Fluiu</option>
+        <option value="client">Cliente</option>
+      </select>
+       deverá
+      <%= f.text_field :event%>
+    </p>
+    </div>
+
+    <br>
+    <%= f.submit "Enviar", class:'btn btn-primary'%>
+  </div>
+<% end %>

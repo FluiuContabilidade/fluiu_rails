@@ -13,8 +13,6 @@
       $.src="https://v2.zopim.com/?5bqiInqfUM1XpajZxDFoAqYm59O3E76l";z.t=+new Date;$.
       type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
     </script>
-<!--End of Zendesk Chat Script-->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
   </head>
 
   <body onload="<%flash.each do |key, value|%> $.notify('<%=value%>', '<%=key%>'); <%end%>">
@@ -26,6 +24,9 @@
           </div>
           <div class="app-nav-content">
             <a style="text-decoration: none;"href="/users/index">Usuários</a>
+          </div>
+          <div class="app-nav-content">
+            <a style="text-decoration: none;"href="/appointments">Calendário</a>
           </div>
         </div>
       </nav>

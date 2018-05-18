@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-
+# .sort  {|x,y| x.item_date[0..1] <=> y.item_date[0..1]}
   def new
     @user = User.new
   end

@@ -1,0 +1,32 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Eventos</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Responsável</th>
+        <th scope="col">Dia</th>
+        <th scope="col">Evento</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+      <tr>
+        <td><% if appointment.owner == 'client'%> Cliente <%else%> Fluiu <%end%></td>
+        <td><%=appointment.day%></td>
+        <td><%=appointment.event%></td>
+        <td><a href="appointments/<%=appointment.id%>/edit" class="btn btn-primary">Editar</a></td>
+        <td><%= link_to 'Deletar', appointment , method: :delete,  data: { confirm: 'Você  tem certeza?' }, class: 'btn btn-danger' %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <a href="/appointments/new" class:'btn btn-primary'> Cadastrar Evento </a>
+  </div>
+</div>

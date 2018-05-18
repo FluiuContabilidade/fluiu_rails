@@ -7,6 +7,11 @@ class PagesController < ApplicationController
     @total_out = current_user.get_monthly_invoice_total(Time.now.strftime('%Y-%m'), 'out')
     @message = PagesHelper.mount_missing_invoice_message current_user
     @tax_extimative = current_user.get_company_tax_percentage
+    if current_user.opening_status == "open"
+      @show = true
+    else
+      @show = false
+    end
   end
 
   # def test

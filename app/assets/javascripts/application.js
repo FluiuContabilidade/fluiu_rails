@@ -17,4 +17,5 @@
 //= require notify
 //= require notifier
 //= require forms
+//= require home_page
 //= require_tree .

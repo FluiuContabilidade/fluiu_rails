@@ -1,21 +1,24 @@
 <div class="home-page-container">
-  <% if @message != nil %>
+  <input type="hidden" id="showvariable" value="<%=@show%>">
+
+  <% if @message != nil  && @show %>
     <div id="alertdiv" class="alert alert-danger" role="alert" onclick="$('#alertdiv').fadeOut();">
       <p> <%=@message%> </p>
     </div>
   <% end %>
 
-  <a href="users/<%=@user.id%>/accounting_info" class="info-box">
+  <a href="users/<%=@user.id%>/accounting_info" class="info-box foropen">
     <div class="info-box-container">
       <h1 class="info-box-title" style="text-decoration: none;">Rotinas Contábeis</h1>
     </div>
   </a>
-  <a href="users/<%=@user.id%>/my_files" class="info-box">
+  <a href="users/<%=@user.id%>/my_files" class="info-box foropen" >
     <div class="info-box-container">
       <h1 class="info-box-title" style="text-decoration: none;">Meus Documentos</h1>
     </div>
   </a>
-  <div class="ib-secondary">
+
+  <div class="ib-secondary foropen">
     <div class="ib-vertical-div">
       <div class="ib-vertical-div">
           <h4>Projeção de gastos:</h4>
@@ -34,22 +37,25 @@
       </div>
     </div>
   </div>
-  <a href="https://usuario.gerencianet.com.br/segunda-via" class="info-box" target="_blank">
+
+  <a href="https://usuario.gerencianet.com.br/segunda-via" class="info-box foropen" target="_blank" >
     <div class="info-box-container">
     <h1 class="info-box-title" style="text-decoration: none;">Gerar 2ª Via de Boleto</h1>
     </div>
   </a>
 
-  <a href="/users/<%=@user.id%>/tax_files" class="info-box">
+  <a href="/users/<%=@user.id%>/tax_files" class="info-box foropen" >
     <div class="info-box-container">
     <h1 class="info-box-title" style="text-decoration: none;">Pagamento de Impostos</h1>
     </div>
   </a>
-  <!-- <% if (@user.protocol != nil) and (@user.protocol != '')%>
-    <a href="/test" class="info-box"  style="background-color: #ffff60;">
+
+  <% if (@user.protocol != nil) and (@user.protocol != '')%>
+    <a href="" class="info-box">
       <div class="info-box-container">
-        <h1 class="info-box-title" style="text-decoration: none; color: black;">Status de Abertura</h1>
+        <h1 class="info-box-title" style="text-decoration: none;">Status de Abertura</h1>
       </div>
     </a>
-  <% end %> -->
+  <% end %>
+
 </div>

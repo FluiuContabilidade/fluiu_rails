@@ -15,5 +15,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require notify
-// require notifier
+//= require notifier
+//= require forms
 //= require_tree .

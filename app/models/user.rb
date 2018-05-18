@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :confirmable
 
  enum role: [ :client, :agent, :admin], _suffix: true
+ enum opening_status: [:open, :validation, :waiting_documents, :comercial]
 
  has_many :invoices
  has_many :accounting_infos

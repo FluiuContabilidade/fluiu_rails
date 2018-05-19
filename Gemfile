@@ -51,8 +51,7 @@ gem "rails_best_practices"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sendgrid-ruby'
 
-gem 'watir', '~> 6.0'
-gem 'selenium-webdriver'
+gem 'cancancan', '~> 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

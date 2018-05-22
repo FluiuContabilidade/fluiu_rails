@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "the signin process", type: :feature do
   before :each do
-    @user = FactoryBot.build(:user, email:'user@email.com', password: 'password')
+    @user = FactoryBot.build(:user, email:'user@email.com', password: 'password', role: 'admin')
     @user.confirm
   end
 
@@ -26,7 +26,7 @@ end
 describe 'adding taxes file to user', type: :feature do
 
   before :each do
-    @user = FactoryBot.build(:user)
+    @user = FactoryBot.build(:user, role: 'admin')
     @user.confirm
     login_as(@user, :scope => :user)
   end

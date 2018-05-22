@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
+  # load_and_authorize_resource
   include PagesHelper
+
 
   def home_page
     @user = current_user

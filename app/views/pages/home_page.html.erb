@@ -50,7 +50,7 @@
     </div>
   </a>
 
-  <% if (@user.protocol != nil) and (@user.protocol != '')%>
+  <% if (@user.opening_status != 'open') %>
     <a href="#" class="info-box" id ="opening_status_box">
       <div class="info-box-container">
         <% if @user.opening_status == 'validation' %>
@@ -64,7 +64,7 @@
     </a>
   <% end %>
 
-  <% if @user.protocol == 'open' %>
+  <% if @user.opening_status == 'open' %>
     <a href="#" class="info-box" >
       <div class="info-box-container">
         <h2 class="info-box-title" style="text-decoration: none;">Solicitar Alteração Contratual</h2>

@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create, :update]
   before_action :set_appointment, only: [:edit, :update, :delete]
+  load_and_authorize_resource
 
   def index
     @appointments = Appointment.all

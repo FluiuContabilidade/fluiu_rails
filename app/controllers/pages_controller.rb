@@ -11,18 +11,9 @@ class PagesController < ApplicationController
     @tax_extimative = current_user.get_company_tax_percentage
   end
 
-  # def test
-  #   # require 'capybara/rails'
-  #   # session = Capybara::Session.new(:selenium_chrome)
-  #   # session.visit('http://portalservicos.jcdf.mdic.gov.br/Portal/pages/consultaProcesso.jsf')
-  #   # session.fill_in('protocolo', with: current_user.protocol)
-  #   # session.click_link('Pesquisar')
-  #   # redirect_to '/home'
-  #   require 'capybara/rails'
-  #   session = Capybara::Session.new(:selenium_chrome)
-  #   session.visit('http://servicos.receita.fazenda.gov.br/Servicos/certidao/CndConjuntaInter/InformaNICertidao.asp?Tipo=1')
-  #   session.click_button('Recarregar')
-  #   redirect_to '/home'
-  # end
+  def test
+    s = ScrappingService.new
+    response =  s.get_negative_certificative current_user
+  end
 
 end

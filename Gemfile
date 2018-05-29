@@ -53,6 +53,8 @@ gem 'sendgrid-ruby'
 
 gem 'cancancan', '~> 2.0'
 gem 'mechanize'
+gem 'deathbycaptcha', '~> 5.0.0'
+
 
 
 group :development, :test do

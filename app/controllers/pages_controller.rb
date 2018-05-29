@@ -12,8 +12,9 @@ class PagesController < ApplicationController
   end
 
   def test
-    s = ScrappingService.new
-    response =  s.get_negative_certificative current_user
+    s = MechanizeService.new
+    # response =  s.get_negative_certificative current_user
+    s.get_debit_relative_certificate
   end
 
 end

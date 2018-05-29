@@ -1,4 +1,4 @@
-class ScrappingService
+class MechanizeService
   require 'mechanize'
 
   def get_negative_certificative user
@@ -22,7 +22,16 @@ class ScrappingService
     return true
   end
 
-  
+  def get_debit_relative_certificate
+    session = Mechanize.new
+    session.get('http://servicos.receita.fazenda.gov.br/Servicos/certidao/CndConjuntaInter/InformaNICertidao.asp?Tipo=1') do |page|
+      byebug
+      page.form_with(:id => 'CertidaoNegativa') do |f|
+        # f.formata =
+        # @response = f.submit
+      end
+    end
+  end
 
 
 

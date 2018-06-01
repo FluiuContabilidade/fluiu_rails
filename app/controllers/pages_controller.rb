@@ -11,10 +11,10 @@ class PagesController < ApplicationController
     @tax_extimative = current_user.get_company_tax_percentage
   end
 
-  def test
-    s = MechanizeService.new
-    # response =  s.get_negative_certificative current_user
-    s.get_debit_relative_certificate
-  end
+  # def test
+  #   s = AutomatizationService.new
+  #   # response =  s.get_negative_certificative current_user
+  #   s.get_debit_relative_certificate
+  # end
 
 end

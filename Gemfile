@@ -34,8 +34,6 @@ gem 'jbuilder', '~> 2.5'
 
 #Gem used to implement authentication
 gem 'devise'
-# Flat UI Gem
-# gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 
 #Bootstrap gem set-up
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -54,6 +52,8 @@ gem 'sendgrid-ruby'
 gem 'cancancan', '~> 2.0'
 gem 'mechanize'
 gem 'deathbycaptcha', '~> 5.0.0'
+gem 'imgkit'
+gem 'wkhtmltoimage-binary'
 
 
 

@@ -57,6 +57,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
+  ## Customized Variables
+  $DEATHBYCAPTCHA_USERNAME = Rails.application.secrets.DEATHBYCAPTCHA_USERNAME
+  $DEATHBYCAPTCHA_PASSWORD = Rails.application.secrets.DEATHBYCAPTCHA_PASSWORD
+  # DEATHBYCAPTCHA_PASSWORD = Rails.application
 
 
 end

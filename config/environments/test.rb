@@ -38,7 +38,7 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
-
+  Rails.application.secrets.secret_key_base = '3248681aff49c99ea37b335089e2db86dca78a26114b727322fb1e99f68998eb64e684bc1989d2c5b35c1ca8f1145f40c0254a857acfe0f00d66be7f995efa75'
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

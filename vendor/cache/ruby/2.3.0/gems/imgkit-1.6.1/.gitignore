@@ -1,6 +1,0 @@
-pkg/*
-*.gem
-.bundle
-test.sh
-.rvmrc
-vendor

@@ -1,3 +1,0 @@
-#!/bin/bash
-echo 'I have a problem' > /dev/stderr
-exit 1

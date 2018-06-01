@@ -54,6 +54,8 @@ gem 'mechanize'
 gem 'deathbycaptcha', '~> 5.0.0'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
+gem "fog-aws"
+
 
 
 

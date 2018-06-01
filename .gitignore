@@ -21,3 +21,7 @@
 /public/uploads/*
 
 config/secrets.yml
+
+## Environment normalization:
+/.bundle
+/vendor/bundle

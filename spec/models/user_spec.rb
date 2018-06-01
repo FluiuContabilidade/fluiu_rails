@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user, invoices: invoices)
     end
 
-    it "returns true if user did not sent monthly invoices" do
+    it "returns true if user did not sent monthly invoices" do3
       current_month = '2018-05'
       expect(@user.has_month_invoices?(current_month)).to be(false)
     end
@@ -49,6 +49,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  
+
+  ## Added specs for method User.request_opening_status_change @ 01/06/2018
+  ##
+  describe '.request_opening_status_change' do
+    it "Sends email when user calls request_opening_status_change method" do
+      user = FactoryBot.build(:user)
+      expect(user.request_opening_status_change).to change{ActionMailer::Base.deliveries.count}.by(1)
+    end
+  end
+
 
 end

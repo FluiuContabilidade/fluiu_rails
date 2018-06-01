@@ -11,7 +11,7 @@ class ApplicationMailer < ActionMailer::Base
   def opening_status_change(user,message)
     @user = user
     @message = message
-    mail(to: 'comercial@fluiu.com.br' , subject: " [#{user.company}] - Mudança de Status de Abertura')"
+    mail(to: 'comercial@fluiu.com.br' , subject: " [#{user.company}] - Mudança de Status de Abertura")
   end
 
 end

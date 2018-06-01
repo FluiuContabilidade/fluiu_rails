@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -34,8 +34,6 @@ gem 'jbuilder', '~> 2.5'
 
 #Gem used to implement authentication
 gem 'devise'
-# Flat UI Gem
-# gem 'flat-ui-sass', github: 'wingrunr21/flat-ui-sass'
 
 #Bootstrap gem set-up
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -51,8 +49,13 @@ gem "rails_best_practices"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sendgrid-ruby'
 
-gem 'watir', '~> 6.0'
-gem 'selenium-webdriver'
+gem 'cancancan', '~> 2.0'
+gem 'mechanize'
+gem 'deathbycaptcha', '~> 5.0.0'
+gem 'imgkit'
+gem 'wkhtmltoimage-binary'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

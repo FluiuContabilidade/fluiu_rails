@@ -19,3 +19,11 @@
 .byebug_history
 
 /public/uploads/*
+
+config/secrets.yml
+
+## Environment normalization:
+/vendor/*
+/.bundle
+/vendor/bundle
+/vendor/cache

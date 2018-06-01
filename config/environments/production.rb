@@ -103,4 +103,9 @@ Rails.application.configure do
    :enable_starttls_auto => true
  }
 
+ ## Custom Variables
+ $DEATHBYCAPTCHA_USERNAME = ENV["DEATHBYCAPTCHA_USERNAME"]
+ $DEATHBYCAPTCHA_PASSWORD = ENV["DEATHBYCAPTCHA_PASSWORD"]
+ 
+
 end

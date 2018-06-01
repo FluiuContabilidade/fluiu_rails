@@ -22,12 +22,16 @@
           <div class="app-nav-content">
             <a href="/">  <%= image_tag("LogoFluiuCiano.png", style:'height: 3em',:alt => "logo") %> </a>
           </div>
-          <div class="app-nav-content">
-            <a style="text-decoration: none;"href="/users/index">Usuários</a>
-          </div>
-          <div class="app-nav-content">
-            <a style="text-decoration: none;"href="/appointments">Calendário</a>
-          </div>
+          <% if can? :manage, User %>
+            <div class="app-nav-content">
+              <a style="text-decoration: none;"href="/users/index">Usuários</a>
+            </div>
+          <% end %>
+          <% if can? :manage, Appointment %>
+            <div class="app-nav-content">
+              <a style="text-decoration: none;"href="/appointments">Calendário</a>
+            </div>
+          <% end %>
         </div>
       </nav>
     <%end%>

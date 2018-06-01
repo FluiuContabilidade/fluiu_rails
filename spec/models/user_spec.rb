@@ -49,6 +49,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  
+
+  ## Added specs for method User.request_opening_status_change @ 01/06/2018
+  ##
+  describe '.request_opening_status_change' do
+    it "Sends email when user calls request_opening_status_change method" do
+      user = FactoryBot.build(:user)
+      expect{user.request_opening_status_change Faker::OnePiece.quote }.to change{ActionMailer::Base.deliveries.count}.by(1)
+    end
+  end
+
 
 end

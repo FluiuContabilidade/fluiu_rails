@@ -1,0 +1,31 @@
+.events-page-container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: $roboto;
+
+  .events-box {
+    width: 100%;
+    border: 1px solid;
+    border-color: black;
+    // background-color: blue;
+
+
+    .event-name {
+      width: 20%;
+      margin-left: 1em;
+      // background-color: red;
+      display: inline-block;
+      border-right: 1px solid;
+
+    }
+
+    .event-description {
+      width: 70%;
+      margin-left: 1em;
+      // background-color: green;
+      display: inline-block;
+    }
+
+  }
+
+}

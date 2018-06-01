@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe "the signin process", type: :feature do
+
   before :each do
-    @user = FactoryBot.build(:user, email:'user@email.com', password: 'password')
+    @user = FactoryBot.build(:user, email:'user@email.com', password: 'password', role: 'admin')
     @user.confirm
   end
 
@@ -20,17 +21,15 @@ describe "the signin process", type: :feature do
     click_button 'Entrar'
     expect(page).to have_content 'Rotinas Contábeis'
   end
-
 end
 
 describe 'adding taxes file to user', type: :feature do
 
   before :each do
-    @user = FactoryBot.build(:user)
+    @user = FactoryBot.build(:user, role: 'admin')
     @user.confirm
     login_as(@user, :scope => :user)
   end
-
 
   it "successfully submit tax files form" do
     url = "users/#{@user.id}/add_tax_files"
@@ -56,5 +55,21 @@ describe 'adding taxes file to user', type: :feature do
     click_button 'Enviar'
     expect(page).to have_content("Clientes")
   end
+end
 
+describe 'the opening status change process' do
+
+  before :each do
+    @user = FactoryBot.build(:user, role: 'admin')
+    @user.confirm
+    login_as(@user, :scope => :user)
+  end
+
+  it "Successfully submits opening status change form" do
+    url = "users/#{@user.id}/opening_status_change"
+    visit url
+    fill_in 'message', with: Faker::OnePiece.quote
+    click_button 'Enviar'
+    expect(page).to have_content('Rotinas Contábeis')
+  end
 end

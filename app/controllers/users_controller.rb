@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:update, :opening_status_change_post]
-  before_action :set_user, only: [:add_tax_files, :update, :show, :files, :tax_files, :add_das, :opening_status_change]
+  before_action :set_user, only: [:edit, :add_tax_files, :update, :show, :files, :tax_files, :add_das, :opening_status_change]
   load_and_authorize_resource
 
   def index
@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def show
   end
 
+  # GET user
+  ## Edit user
   def edit
   end
 
@@ -71,6 +73,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments)
+      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status, :protocol, :earnings_type, :earnings_range)
     end
 end

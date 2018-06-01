@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     post '/:id/opening_status_change', to: 'users#opening_status_change_post'
 
     ## 01/06/2018 - Added User Edit Routes
-    
+    get '/:id/edit', to: 'users#edit'
+    post '/:id/edit', to: 'users#update'
 
     #fix this - BAD modularization
     get '/:id/accounting_info', to: 'invoices#accounting_info'

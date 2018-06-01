@@ -5,7 +5,8 @@
     <thead class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Email</th>
+        <th scope="col">Empresa</th>
+        <th></th>
         <th></th>
         <th></th>
         <th></th>
@@ -16,10 +17,11 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%= user.email %></td>
-        <td><a href="/users/<%=user.id%>/add_tax_files" class="btn btn-primary">Adicionar Impostos</a></td>
-        <td><a href="/users/<%=user.id%>/invoices_index" class="btn btn-primary">Notas Fiscais</a>
-        <td><a href="/users/details/<%=user.id%>" class="btn btn-primary">Visualizar</a> </td>
+        <td><%= user.company %></td>
+        <td> <a href="/users/<%=user.id%>/edit" class="btn btn-info">Editar</a></td>
+        <td><a href="/users/<%=user.id%>/add_tax_files" class="btn btn-info">Adicionar Impostos</a></td>
+        <td><a href="/users/<%=user.id%>/invoices_index" class="btn btn-info">Notas Fiscais</a>
+        <td><a href="/users/details/<%=user.id%>" class="btn btn-info">Visualizar</a> </td>
         <td><a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
       </tr>
       <% end %>
@@ -27,6 +29,6 @@
   </table>
 
   <div class="form-group">
-    <a href="/user/new" class:'btn btn-primary'> Cadastrar Cliente </a>
+    <a href="/user/new" class='btn btn-primary'> Cadastrar Cliente </a>
   </div>
 </div>

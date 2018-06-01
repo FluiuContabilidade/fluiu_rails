@@ -51,6 +51,11 @@ class User < ApplicationRecord
    return user_invoice_months.include?(month)
  end
 
+ def request_opening_status_change message
+   ApplicationMailer.opening_status_change(self,message).deliver_now
+   return
+ end
+
  def get_company_tax_percentage
    if(earnings_type == "1")
      case earnings_range

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:edit]
-  before_action :set_user, only: [:add_tax_files, :edit, :show, :files, :tax_files, :add_das]
+  skip_before_action :verify_authenticity_token, :only => [:edit, :opening_status_change_post]
+  before_action :set_user, only: [:add_tax_files, :edit, :show, :files, :tax_files, :add_das, :opening_status_change]
   load_and_authorize_resource
 
   def index
@@ -51,6 +51,20 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  # GET opening_status_change
+  ## Open Opening Status Change Form
+  def opening_status_change
+  end
+
+  # POST opening_status_change
+  ## Submit Opening Status Change Form
+  def opening_status_change_post
+    @user.request_opening_status_change params[:message]
+    redirect_to "/home"
+    flash[:success] = 'Operação realizada com sucesso! Fluiu Contabilidade irá contactar você em breve!'
+  end
+
 
   private
     def user_params

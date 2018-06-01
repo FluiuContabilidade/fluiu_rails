@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     get '/:id/tax_files', to: 'users#tax_files'
     post '/:id/edit', to:'users#edit'
 
+    ## 01/06/2018 - Added Opening Status Change routes
+    get '/:id/opening_status_change', to: 'users#opening_status_change'
+    post '/:id/opening_status_change', to: 'users#opening_status_change_post'
+
     #fix this - BAD modularization
     get '/:id/accounting_info', to: 'invoices#accounting_info'
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'

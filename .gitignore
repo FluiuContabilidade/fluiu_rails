@@ -23,6 +23,7 @@
 config/secrets.yml
 
 ## Environment normalization:
+/vendor/*
 /.bundle
 /vendor/bundle
 /vendor/cache

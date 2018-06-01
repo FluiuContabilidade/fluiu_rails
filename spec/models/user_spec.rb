@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user, invoices: invoices)
     end
 
-    it "returns true if user did not sent monthly invoices" do3
+    it "returns true if user did not sent monthly invoices" do
       current_month = '2018-05'
       expect(@user.has_month_invoices?(current_month)).to be(false)
     end

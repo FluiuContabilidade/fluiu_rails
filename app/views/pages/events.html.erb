@@ -1,0 +1,28 @@
+<div class="events-page-container">
+  <h2>Responsabilidades Fluiu</h2>
+
+  <div class="events-box">
+    <% @agent_events.each do |e| %>
+      <div class="event-name">
+        <h3>Até o dia <%=e.day%></h3>
+      </div>
+      <div class="event-description">
+        <h3><%=e.event%></h3>
+      </div>
+    <% end %>
+  </div>
+
+
+  <h2>Responsabilidades Cliente</h2>
+
+  <div class="events-box">
+    <% @client_events.each do |e| %>
+      <div class="event-name">
+        <h3>Até o dia <%=e.day%></h3>
+      </div>
+      <div class="event-description">
+        <h3><%=e.event%></h3>
+      </div>
+    <% end %>
+  </div>
+</div>

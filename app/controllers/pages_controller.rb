@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     @tax_extimative = current_user.get_company_tax_percentage
   end
 
+  def events
+    @agent_events = Appointment.agent_owner.all.sort  {|y,x| x.day[0..1] <=> y.day[0..1]}
+    @client_events = Appointment.client_owner.all.sort  {|y,x| x.day[0..1] <=> y.day[0..1]}
+  end
   # def test
   #   s = AutomatizationService.new
   #   # response =  s.get_negative_certificative current_user

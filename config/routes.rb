@@ -61,6 +61,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home_page'
   get 'home', to: 'pages#home_page'
+  get 'events', to: 'pages#events'
   get 'test', to: 'pages#test'
 
   ## USERS

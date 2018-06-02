@@ -60,6 +60,8 @@ Rails.application.configure do
   ## Customized Variables
   $DEATHBYCAPTCHA_USERNAME = Rails.application.secrets.DEATHBYCAPTCHA_USERNAME
   $DEATHBYCAPTCHA_PASSWORD = Rails.application.secrets.DEATHBYCAPTCHA_PASSWORD
+  $AWS_ACCESS_KEY = Rails.application.secrets.AWS_ACCESS_KEY
+  $AWS_SECRET_KEY= Rails.application.secrets.AWS_SECRET_KEY
   # DEATHBYCAPTCHA_PASSWORD = Rails.application
 
 

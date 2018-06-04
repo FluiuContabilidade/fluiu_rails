@@ -43,7 +43,7 @@ gem 'byebug'
 ## Gem to radomly generate user passwords
 gem 'passgen', '~> 1.0', '>= 1.0.2'
 ##
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.2.1'
 ##
 gem "rails_best_practices"
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
@@ -54,6 +54,8 @@ gem 'mechanize'
 gem 'deathbycaptcha', '~> 5.0.0'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
+gem "fog-aws"
+
 
 
 

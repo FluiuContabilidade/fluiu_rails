@@ -108,6 +108,7 @@ Rails.application.configure do
  $DEATHBYCAPTCHA_PASSWORD = ENV["DEATHBYCAPTCHA_PASSWORD"]
  $AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
  $AWS_SECRET_KEY= ENV['AWS_SECRET_KEY']
+ Rails.application.secrets.secret_key_base = ENV["SECRET_KEY_BASE"]
 
 
 end

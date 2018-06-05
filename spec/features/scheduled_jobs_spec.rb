@@ -11,7 +11,7 @@ describe 'task: event_notice' do
     end
 
     allow(Time).to receive(:now).and_return(Time.new(2018, 10, 10))
-    appointment = FactoryBot.create(:appointment, day: '15')
+    appointment = FactoryBot.create(:appointment, day: '12')
     expect { Rake::Task['event_notice'].invoke }.to change { ActionMailer::Base.deliveries.count }.by(3)
 
   end

@@ -40,6 +40,13 @@ class Invoice < ApplicationRecord
     update_attributes(month: data_field)
   end
 
+
+  ## Static Methods
+
+  # Receive user id. Returns invoices for last month
+  def self.get_invoices
+  end
+
   def self.price_sum collection
     sum = 0
     for invoice in collection do
@@ -68,5 +75,5 @@ class Invoice < ApplicationRecord
     return false if (cfop.first == '5102') or (cfop.first == '6102') or (cfop.first == '7102')
     return true if (cfop.first == '5933') or (cfop.first == '6933') or (cfop.first == '7933')
   end
-  
+
 end

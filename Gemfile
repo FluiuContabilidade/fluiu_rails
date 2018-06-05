@@ -57,6 +57,9 @@ gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 gem "fog-aws"
 gem 'awesome_print', '~> 1.8', require: 'ap'
+gem 'rubyzip'
+gem 'zip-zip'
+
 
 
 

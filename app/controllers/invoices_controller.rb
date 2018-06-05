@@ -25,6 +25,30 @@ class InvoicesController < ApplicationController
     # return
   end
 
+  ## GET /get_invoices/user_id
+  def get_user_invoices
+    user = User.find(params[:id])
+    date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day)
+    @invoices = user.invoices.where month: date.strftime('%Y-%m')
+
+    filename = user.company + DateTime.now.to_s + '.zip'
+    temp_file = Tempfile.new(filename)
+
+
+    ## 05/06/2018
+    # FIXME:  This will only work on development environment. Adjust it to work on production and test, S3 needed.
+    Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip_file|
+      @invoices.each do |f|
+         zip_file.add(f.invoice_file.file.filename, f.invoice_file.path)
+      end
+    end
+
+    zip_data = File.read(temp_file.path)
+    send_data(zip_data, :type => 'application/zip', :filename => filename)
+
+
+  end
+
   def create_invoice(invoice_params)
     invoice = Invoice.new(user_id: invoice_params[:user_id])
     invoice.invoice_file = invoice_params[:file]

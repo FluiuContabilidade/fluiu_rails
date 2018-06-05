@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   devise_scope :user do
-    get '/signout', to: 'devise/sessions#destroy', as: :signout
+    get '/sign_out', to: 'devise/sessions#destroy', as: :signout
     get 'user/new', to: 'users#new'
     post 'user/create', to: 'users/registrations#custom_account_creation', as: :create_user
   end
@@ -57,6 +57,9 @@ Rails.application.routes.draw do
     scope :report do
       get 'individual/:id', to:'invoices#individual_report'
     end
+
+    get 'get_invoices/:id', to: 'invoices#get_user_invoices'
+
   end
 
   scope :agent do

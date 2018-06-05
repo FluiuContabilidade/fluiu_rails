@@ -56,6 +56,7 @@ gem 'deathbycaptcha', '~> 5.0.0'
 gem 'imgkit'
 gem 'wkhtmltoimage-binary'
 gem "fog-aws"
+gem 'awesome_print', '~> 1.8', require: 'ap'
 
 
 

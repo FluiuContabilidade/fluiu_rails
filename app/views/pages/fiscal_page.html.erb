@@ -1,0 +1,23 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Clientes</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Empresa</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.company %></td>
+        <td> <a href="#" class="btn btn-info">Apuração</a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

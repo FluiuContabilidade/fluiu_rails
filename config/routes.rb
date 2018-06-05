@@ -59,6 +59,10 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :agent do
+    get 'fiscal', to: 'pages#fiscal_page'
+  end
+
   root to: 'pages#home_page'
   get 'home', to: 'pages#home_page'
   get 'events', to: 'pages#events'

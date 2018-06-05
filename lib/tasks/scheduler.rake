@@ -6,6 +6,7 @@ task :event_notice => :environment do
     if (e.day.to_i - 2) == current_day
       users.each do |u|
         ApplicationMailer.event_notification_mail(u, e).deliver_now
+        # byebug
       end
     end
   end

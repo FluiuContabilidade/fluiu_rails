@@ -106,8 +106,17 @@ Rails.application.configure do
  ## Custom Variables
  $DEATHBYCAPTCHA_USERNAME = ENV["DEATHBYCAPTCHA_USERNAME"]
  $DEATHBYCAPTCHA_PASSWORD = ENV["DEATHBYCAPTCHA_PASSWORD"]
- $AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
- $AWS_SECRET_KEY= ENV['AWS_SECRET_KEY']
+ # $AWS_ACCESS_KEY = ENV['AWS_ACCESS_KEY']
+ # $AWS_SECRET_KEY= ENV['AWS_SECRET_KEY']
 
+ # CarrierWave.configure do |config|
+ #   config.fog_provider = 'fog/aws'                        # required
+ #   config.fog_credentials = {
+ #     provider:              'AWS',                        # required
+ #     aws_access_key_id:      $AWS_ACCESS_KEY,                        # required
+ #     aws_secret_access_key:  $AWS_SECRET_KEY,                        # required
+ #   }
+ #   config.fog_directory  = 'Fluiu App'                                   # required
+ # end
 
 end

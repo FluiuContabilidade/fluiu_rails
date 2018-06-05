@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# source 'http://gems.github.com'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -46,7 +47,7 @@ gem 'passgen', '~> 1.0', '>= 1.0.2'
 gem 'carrierwave', '~> 1.2.1'
 ##
 gem "rails_best_practices"
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+# gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'sendgrid-ruby'
 
 gem 'cancancan', '~> 2.0'
@@ -66,8 +67,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   # gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7'
-  gem "factory_bot_rails"
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem "factory_bot_rails"
 end
 
 group :development do

@@ -19,7 +19,7 @@ describe "the signin process", type: :feature do
     end
 
     click_button 'Entrar'
-    expect(page).to have_content 'Rotinas Contábeis'
+    expect(page).to have_content 'Usuários'
   end
 end
 
@@ -70,6 +70,6 @@ describe 'the opening status change process' do
     visit url
     fill_in 'message', with: Faker::OnePiece.quote
     click_button 'Enviar'
-    expect(page).to have_content('Rotinas Contábeis')
+    expect(page).to have_content('Usuários')
   end
 end

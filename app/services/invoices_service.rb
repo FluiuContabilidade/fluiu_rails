@@ -1,5 +1,24 @@
 class InvoicesService
 
+  def self.zip_invoice_files user
+    date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day)
+    @invoices = user.invoices.where month: date.strftime('%Y-%m')
+
+    filename = user.company + DateTime.now.to_s + '.zip'
+    temp_file = Tempfile.new(filename)
+
+    ## 05/06/2018
+    # FIXME:  This will only work on development environment. Adjust it to work on production and test, S3 needed.
+    Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip_file|
+      @invoices.each do |f|
+         zip_file.add(f.invoice_file.file.filename, f.invoice_file.path)
+      end
+    end
+
+    zip_data = File.read(temp_file.path)
+    return {data: zip_data, filename: filename}
+  end
+
   def self.setup_invoice_collection collection
     col = []
     collection.each do |f|

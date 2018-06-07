@@ -73,6 +73,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status, :protocol, :earnings_type, :earnings_range)
+      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status,  :protocol, :earnings_type, :earnings_range, :role)
     end
 end

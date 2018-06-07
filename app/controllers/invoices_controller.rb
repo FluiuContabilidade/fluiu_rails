@@ -25,6 +25,20 @@ class InvoicesController < ApplicationController
     # return
   end
 
+  ## GET /get_invoices/user_id
+  def get_user_invoices
+    user = User.find(params[:id])
+
+    begin
+      @zip_file = InvoicesService.zip_invoice_files user
+      send_data(@zip_file[:data], :type => 'application/zip', :filename => @zip_file[:filename])
+      flash[:success] = 'Arquivo enviado com sucesso!'
+    rescue
+      flash[:error] = 'Algum erro ocorreu. XMLs não válidos foram encontrados.'
+    end
+
+  end
+
   def create_invoice(invoice_params)
     invoice = Invoice.new(user_id: invoice_params[:user_id])
     invoice.invoice_file = invoice_params[:file]

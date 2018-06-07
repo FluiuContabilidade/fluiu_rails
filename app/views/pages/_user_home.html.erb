@@ -1,0 +1,81 @@
+<div class="home-page-container">
+  <input type="hidden" id="showvariable" value="<%= @user.opening_status %>">
+
+  <% if @message != nil  &&  @user.opening_status == 'open' %>
+    <div id="alertdiv" class="alert alert-danger" role="alert" onclick="$('#alertdiv').fadeOut();">
+      <p> <%=@message%> </p>
+    </div>
+  <% end %>
+
+  <a href="users/<%=@user.id%>/accounting_info" class="info-box foropen">
+    <div class="info-box-container">
+      <h1 class="info-box-title" style="text-decoration: none;">Rotinas Contábeis</h1>
+    </div>
+  </a>
+  <a href="users/<%=@user.id%>/my_files" class="info-box foropen" >
+    <div class="info-box-container">
+      <h1 class="info-box-title" style="text-decoration: none;">Meus Documentos</h1>
+    </div>
+  </a>
+
+  <div class="ib-secondary foropen">
+    <div class="ib-vertical-div">
+      <div class="ib-vertical-div">
+          <h4>Projeção de gastos:</h4>
+      </div>
+      <div class="ib-vertical-div">
+        <h4 style="color: #930000;">R$ <%=@total_out.round(2)%></h4>
+      </div>
+    </div>
+    <div class="ib-vertical-div">
+      <div class="ib-vertical-div">
+        <h4>Projeção de recebimentos:</h4>
+      </div>
+      <div class="ib-vertical-div">
+        <h4 style="color: green">R$ <%=@total_in.round(2)%></h4>
+        <p> Extimativa de Impostos: <%=@total_in * @tax_extimative%></p>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://usuario.gerencianet.com.br/segunda-via" class="info-box foropen" target="_blank" >
+    <div class="info-box-container">
+    <h1 class="info-box-title" style="text-decoration: none;">Gerar 2ª Via de Boleto</h1>
+    </div>
+  </a>
+
+  <a href="/users/<%=@user.id%>/tax_files" class="info-box foropen" >
+    <div class="info-box-container">
+    <h1 class="info-box-title" style="text-decoration: none;">Pagamento de Impostos</h1>
+    </div>
+  </a>
+
+  <a href="/events" class="info-box foropen" >
+    <div class="info-box-container">
+    <h1 class="info-box-title" style="text-decoration: none;">Informativos</h1>
+    </div>
+  </a>
+
+  <% if (@user.opening_status != 'open') %>
+    <a href="#" class="info-box" id ="opening_status_box">
+      <div class="info-box-container">
+        <% if @user.opening_status == 'validation' %>
+          <h2 class="info-box-title" style="text-decoration: none;">Status de Abertura: Em Validação</h2>
+        <% elsif @user.opening_status == 'waiting_documents'%>
+          <h2 class="info-box-title" style="text-decoration: none;">Status de Abertura: Aguardando documentos</h2>
+        <% else %>
+          <h2 class="info-box-title" style="text-decoration: none;">Clique para checar status de abertura</h2>
+        <%end%>
+      </div>
+    </a>
+  <% end %>
+
+  <% if @user.opening_status == 'open' %>
+    <a href="users/<%=@user.id%>/opening_status_change" class="info-box" >
+      <div class="info-box-container">
+        <h2 class="info-box-title" style="text-decoration: none;">Solicitar Alteração Contratual</h2>
+      </div>
+    </a>
+  <% end %>
+
+</div>

@@ -15,6 +15,10 @@ class PagesController < ApplicationController
     @agent_events = Appointment.agent_owner.all.sort  {|y,x| x.day[0..1] <=> y.day[0..1]}
     @client_events = Appointment.client_owner.all.sort  {|y,x| x.day[0..1] <=> y.day[0..1]}
   end
+
+  def fiscal_page
+    @users = User.client_role.all
+  end
   # def test
   #   s = AutomatizationService.new
   #   # response =  s.get_negative_certificative current_user

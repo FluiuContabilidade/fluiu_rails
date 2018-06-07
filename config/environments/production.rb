@@ -110,5 +110,14 @@ Rails.application.configure do
  $AWS_SECRET_KEY= ENV['AWS_SECRET_KEY']
  Rails.application.secrets.secret_key_base = ENV["SECRET_KEY_BASE"]
 
+ CarrierWave.configure do |config|
+   config.fog_provider = 'fog/aws'                        # required
+   config.fog_credentials = {
+     provider:              'AWS',                        # required
+     aws_access_key_id:      $AWS_ACCESS_KEY,                        # required
+     aws_secret_access_key:  $AWS_SECRET_KEY,                        # required
+   }
+   config.fog_directory  = 'fluiu-rails-app'                                   # required
+ end
 
 end

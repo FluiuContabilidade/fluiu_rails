@@ -1,6 +1,9 @@
 class AutomatizationService
   require 'mechanize'
 
+  ## Uriel tips
+  ## Get Base64 with .io_body from element
+
   def get_negative_certificative user
     session = Mechanize.new
     session.get('http://www.fazenda.df.gov.br/area.cfm?id_area=449') do |page|

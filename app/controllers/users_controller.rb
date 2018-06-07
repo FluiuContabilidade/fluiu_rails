@@ -3,20 +3,30 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :add_tax_files, :update, :show, :files, :tax_files, :add_das, :opening_status_change]
   load_and_authorize_resource
 
+  ## GET users/:filter
+  ## Get All Users, filter indicates user role.
   def index
-    @users = User.all
+    @filter = params[:filter]
+
+    if @filter == "admin"
+      @users = User.admin_role.all
+    else
+      @users = User.client_role.all
+    end
   end
 # .sort  {|x,y| x.item_date[0..1] <=> y.item_date[0..1]}
   def new
+    @filter = params[:filter]
     @user = User.new
   end
 
   def show
   end
 
-  # GET user
+  # GET user/:filter
   ## Edit user
   def edit
+    @filter = params[:filter]
   end
 
   def update
@@ -73,6 +83,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status,  :protocol, :earnings_type, :earnings_range, :role)
+      params.require(:user).permit(:name, :das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status,  :protocol, :earnings_type, :earnings_range, :role)
     end
 end

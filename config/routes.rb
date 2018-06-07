@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   scope :users do
-    get '/index', to:'users#index'
+    get '/index(/:filter)', to:'users#index'
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     post '/:id/opening_status_change', to: 'users#opening_status_change_post'
 
     ## User Edit Routes
-    get '/:id/edit', to: 'users#edit'
+    get '/:id/edit(/:filter)', to: 'users#edit'
     post '/:id/edit', to: 'users#update'
 
     # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/sign_out', to: 'devise/sessions#destroy', as: :signout
-    get 'user/new', to: 'users#new'
+    get 'user/new(/:filter)', to: 'users#new'
     post 'user/create', to: 'users/registrations#custom_account_creation', as: :create_user
   end
 

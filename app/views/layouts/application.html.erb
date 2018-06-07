@@ -24,12 +24,17 @@
           </div>
           <% if can? :manage, User %>
             <div class="app-nav-content">
-              <a style="text-decoration: none;"href="/users/index">Usuários</a>
+              <a style="text-decoration: none;"href="/users/index">Clientes</a>
             </div>
           <% end %>
           <% if can? :manage, Appointment %>
             <div class="app-nav-content">
               <a style="text-decoration: none;"href="/appointments">Calendário</a>
+            </div>
+          <% end %>
+          <% if can? :manage, User %>
+            <div class="app-nav-content">
+              <a style="text-decoration: none;"href="/users/index/admin">Usuários</a>
             </div>
           <% end %>
         </div>

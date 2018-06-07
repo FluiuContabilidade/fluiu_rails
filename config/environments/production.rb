@@ -114,8 +114,9 @@ Rails.application.configure do
    config.fog_provider = 'fog/aws'                        # required
    config.fog_credentials = {
      provider:              'AWS',                        # required
+     region:                'sa-east-1',
      aws_access_key_id:      $AWS_ACCESS_KEY,                        # required
-     aws_secret_access_key:  $AWS_SECRET_KEY,                        # required
+     aws_secret_access_key:  $AWS_SECRET_KEY                        # required
    }
    config.fog_directory  = 'fluiu-rails-app'                                   # required
  end

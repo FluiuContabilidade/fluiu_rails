@@ -19,6 +19,7 @@
         <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td> <a href="/users/<%=user.id%>/my_files">Ver Documentos</a> </td>
         <td> <a href="/users/<%=user.id%>/edit/agent" class="btn btn-info">Editar</a></td>
         <td><a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
       </tr>

@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   end
 
   def fiscal_page
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
     @users = User.client_role.all
   end
   # def test

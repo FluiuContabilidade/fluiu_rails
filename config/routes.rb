@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
 
   scope :users do
-    get '/index', to:'users#index'
+    get '/index(/:filter)', to:'users#index'
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
 
@@ -14,15 +14,15 @@ Rails.application.routes.draw do
     get '/:id/tax_files', to: 'users#tax_files'
     post '/:id/update', to:'users#update'
 
-    ## 01/06/2018 - Added Opening Status Change routes
+    ## Opening Status Change routes
     get '/:id/opening_status_change', to: 'users#opening_status_change'
     post '/:id/opening_status_change', to: 'users#opening_status_change_post'
 
-    ## 01/06/2018 - Added User Edit Routes
-    get '/:id/edit', to: 'users#edit'
+    ## User Edit Routes
+    get '/:id/edit(/:filter)', to: 'users#edit'
     post '/:id/edit', to: 'users#update'
 
-    #fix this - BAD modularization
+    # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
     get '/:id/accounting_info', to: 'invoices#accounting_info'
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/sign_out', to: 'devise/sessions#destroy', as: :signout
-    get 'user/new', to: 'users#new'
+    get 'user/new(/:filter)', to: 'users#new'
     post 'user/create', to: 'users/registrations#custom_account_creation', as: :create_user
   end
 

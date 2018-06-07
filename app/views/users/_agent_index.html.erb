@@ -1,0 +1,33 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h1>Usuários</h1>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Usuário</th>
+        <th scope="col">Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td> <a href="/users/<%=user.id%>/my_files">Ver Documentos</a> </td>
+        <td> <a href="/users/<%=user.id%>/edit/agent" class="btn btn-info">Editar</a></td>
+        <td><a href="/users/delete/<%=user.id%>" class="btn btn-danger">Deletar</a> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="form-group">
+    <a href="/user/new/agent" class='btn btn-primary'> Cadastrar Usuário </a>
+  </div>
+</div>

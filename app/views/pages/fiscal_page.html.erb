@@ -6,6 +6,8 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Empresa</th>
+        <th></th>
+        <th></th>
 
       </tr>
     </thead>
@@ -14,7 +16,13 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.company %></td>
-        <td> <a href="/invoices/get_invoices/<%=user.id%>" class="btn btn-info">Apuração</a></td>
+        <% if user.has_month_invoices? @date %>
+          <td> <a href="/invoices/get_invoices/<%=user.id%>" class="btn btn-info">Apuração</a></td>
+        <% else %>
+          <td>Não emitiu notas.</td>
+        <% end %>
+        <td>  <td> <a href="/users/<%=user.id%>/my_files">Ver Documentos</a> </td></td>
+        <td> <a href="/users/<%=user.id%>/invoices_index">XMLS</a> </td>
       </tr>
       <% end %>
     </tbody>

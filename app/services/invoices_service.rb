@@ -7,8 +7,8 @@ class InvoicesService
     filename = user.company + DateTime.now.to_s + '.zip'
     temp_file = Tempfile.new(filename)
 
-    ## 05/06/2018
-    # FIXME:  This will only work on development environment. Adjust it to work on production and test, S3 needed.
+    ## 07/06/2018
+    # FIXME:  This will only work on production environment.
     Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip_file|
       @invoices.each do |f|
          zip_file.add(f.invoice_file.file.filename, f.invoice_file.path)

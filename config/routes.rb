@@ -14,15 +14,15 @@ Rails.application.routes.draw do
     get '/:id/tax_files', to: 'users#tax_files'
     post '/:id/update', to:'users#update'
 
-    ## 01/06/2018 - Added Opening Status Change routes
+    ## Opening Status Change routes
     get '/:id/opening_status_change', to: 'users#opening_status_change'
     post '/:id/opening_status_change', to: 'users#opening_status_change_post'
 
-    ## 01/06/2018 - Added User Edit Routes
+    ## User Edit Routes
     get '/:id/edit', to: 'users#edit'
     post '/:id/edit', to: 'users#update'
 
-    #fix this - BAD modularization
+    # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
     get '/:id/accounting_info', to: 'invoices#accounting_info'
     post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end

@@ -63,9 +63,8 @@ Rails.application.routes.draw do
   end
 
   scope :agent do
-    scope: fiscal do
+    scope :fiscal do
       get '/', to: 'pages#fiscal_page'
-
     end
   end
 

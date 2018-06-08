@@ -24,6 +24,7 @@ class PagesController < ApplicationController
   def fiscal_canvass
     @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
     @not_sent = User.not_sent_users @date
+    @sent = User.client_role.all - @not_sent
   end
 
   ## TODO: Test this route

@@ -24,3 +24,30 @@
   <a href="remind_not_sent_users" class="btn btn-info">Enviar solicitação de envio de notas fiscais</a>
 
 </div>
+
+
+<div style="width: 80%; margin: 0 auto;">
+  <h2>Apuração</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Empresa</th>
+        <th></th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @sent.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.company %></td>
+        <td> <%= link_to "Download XMLs", get_invoices_path(id: user.id), method: :post %> </td>
+        <td> <a href="/documents/das/<%=user.id%>"> Anexar DAS </a> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

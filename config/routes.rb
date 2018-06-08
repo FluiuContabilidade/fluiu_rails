@@ -58,8 +58,13 @@ Rails.application.routes.draw do
       get 'individual/:id', to:'invoices#individual_report'
     end
 
-    get 'get_invoices/:id', to: 'invoices#get_user_invoices'
+    post 'get_invoices/:id', to: 'invoices#get_user_invoices', as: :get_invoices
 
+  end
+
+  scope :documents do
+    get '/das/:id', to: 'documents#das_page'
+    post '/add_das', to: 'documents#add_das'
   end
 
   scope :agent do

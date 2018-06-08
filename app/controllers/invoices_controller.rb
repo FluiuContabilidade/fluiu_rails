@@ -25,16 +25,19 @@ class InvoicesController < ApplicationController
     # return
   end
 
-  ## GET /get_invoices/user_id
+  ## POST /get_invoices/user_id
+  ## Sends a ZIP document to requester containing invoices of param month for param user.
   def get_user_invoices
     user = User.find(params[:id])
 
-    begin
-      @zip_file = InvoicesService.zip_invoice_files user
+    @zip_file = InvoicesService.zip_invoice_files user
+    if @zip_file
       send_data(@zip_file[:data], :type => 'application/zip', :filename => @zip_file[:filename])
       flash[:success] = 'Arquivo enviado com sucesso!'
-    rescue
+      return
+    else
       flash[:error] = 'Algum erro ocorreu. XMLs não válidos foram encontrados.'
+      return
     end
 
   end

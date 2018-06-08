@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
  has_many :invoices
  has_many :accounting_infos
+ has_many :documents
 
  mount_uploader :patrimonial_balance, UserFileUploader
  mount_uploader :dre_file, UserFileUploader
@@ -30,6 +31,7 @@ class User < ApplicationRecord
    User.client_role.all.each do |user|
      users.push(user) if !(user.has_month_invoices? date)
    end
+   return users
  end
 
  def user_invoice_months

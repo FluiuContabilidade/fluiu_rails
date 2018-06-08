@@ -21,6 +21,26 @@ class PagesController < ApplicationController
     @users = User.client_role.all
   end
 
+  def fiscal_canvass
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
+    @not_sent = User.not_sent_users @date
+  end
+
+  ## TODO: Test this route
+  # get /remind_not_sent_users
+  ## Send email to all users that did not send invoices for prior month
+  def remind_not_sent_users
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
+    @not_sent = User.not_sent_users @date
+
+    @not_sent.each do |user|
+      ApplicationMailer.invoices_reminder_mail(user).deliver_now
+    end
+
+    flash[:success] = 'Enviado email para todos usuários que não enviaram as notas fiscais para o mês anterior.'
+    redirect_to '/agent/fiscal'
+  end
+
   def test
     # s = AutomatizationService.new
     # response = s.get_payment_ticket

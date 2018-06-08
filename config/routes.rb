@@ -65,6 +65,8 @@ Rails.application.routes.draw do
   scope :agent do
     scope :fiscal do
       get '/', to: 'pages#fiscal_page'
+      get '/canvass', to: 'pages#fiscal_canvass'
+      get '/remind_not_sent_users', to: 'pages#remind_not_sent_users'
     end
   end
 

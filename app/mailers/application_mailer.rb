@@ -14,4 +14,9 @@ class ApplicationMailer < ActionMailer::Base
     mail(to: 'comercial@fluiu.com.br' , subject: " [#{user.company}] - Mudança de Status de Abertura")
   end
 
+  def invoices_reminder_mail user
+    @user = user
+    mail(to: user.email, subject: '[Fluiu Contabilidade] - Envio de Notas Fiscais ')
+  end
+
 end

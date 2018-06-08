@@ -24,6 +24,14 @@ class User < ApplicationRecord
  mount_uploader :tributary_sub, UserFileUploader
  mount_uploader :payment_installments, UserFileUploader
 
+ ## Method returns a list of users that have not sent invoices for the param date
+ def self.not_sent_users date
+   users = []
+   User.client_role.all.each do |user|
+     users.push(user) if !(user.has_month_invoices? date)
+   end
+ end
+
  def user_invoice_months
    months = []
    invoices.group_by(&:month).each do |key,value|

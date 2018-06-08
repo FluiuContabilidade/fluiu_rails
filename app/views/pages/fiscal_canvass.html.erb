@@ -1,6 +1,5 @@
 <div style="width: 80%; margin: 0 auto;">
-  <h2>Clientes</h2>
-  <br>
+  <h2>Ainda não enviaram.</h2>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -12,17 +11,16 @@
       </tr>
     </thead>
     <tbody>
-      <% @users.each do |user| %>
+      <% @not_sent.each do |user| %>
       <tr>
         <td><%= user.id %></td>
         <td><%= user.company %></td>
-        <td>  <td> <a href="/users/<%=user.id%>/my_files">Documentos</a> </td></td>
-        <td> <a href="/users/<%=user.id%>/invoices_index">Histórico</a> </td>
+        <td></td>
       </tr>
       <% end %>
     </tbody>
   </table>
 
-  <a href="fiscal/canvass" class="btn btn-info">Apuração</a>
+  <a href="remind_not_sent_users" class="btn btn-info">Enviar solicitação de envio de notas fiscais</a>
 
 </div>

@@ -22,17 +22,17 @@
           <div class="app-nav-content">
             <a href="/">  <%= image_tag("LogoFluiuCiano.png", style:'height: 3em',:alt => "logo") %> </a>
           </div>
-          <% if ((current_user == "admin")||(current_user=="agent")) %>
+          <% if ((current_user.role  == "admin")||(current_user.role =="agent")) %>
             <div class="app-nav-content">
               <a style="text-decoration: none;"href="/users/index">Clientes</a>
             </div>
           <% end %>
-          <% if ((current_user == "admin")||(current_user=="agent")) %>
+          <% if ((current_user.role  == "admin")||(current_user.role =="agent")) %>
             <div class="app-nav-content">
               <a style="text-decoration: none;"href="/appointments">Calendário</a>
             </div>
           <% end %>
-          <% if ((current_user == "admin")||(current_user=="agent")) %>
+          <% if ((current_user.role  == "admin")||(current_user.role =="agent")) %>
             <div class="app-nav-content">
               <a style="text-decoration: none;"href="/users/index/admin">Usuários</a>
             </div>

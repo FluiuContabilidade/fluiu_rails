@@ -13,6 +13,10 @@ class Ability
       can :manage, Appointment
     end
 
+    # if user.role == "client"
+    #   can :manage, Invoice, user_id: user.id
+    # end
+
 
     # Define abilities for the passed in user here. For example:
     #

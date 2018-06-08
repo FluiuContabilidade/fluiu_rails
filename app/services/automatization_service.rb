@@ -4,6 +4,23 @@ class AutomatizationService
   ## Uriel tips
   ## Get Base64 with .io_body from element
 
+  def get_payment_ticket
+    session = Mechanize.new
+    # byebug
+    session.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1'
+    session.user_agent_alias = 'Windows IE 11'
+
+    session.get('https://usuario.gerencianet.com.br/login') do |page|
+      byebug
+      page.form_with(:name => 'form') do |f|
+        f.login = 'g.almeidaa.campos@gmail.com'
+        f.password = 'bleach031296!'
+        @response = f.submit
+      end
+    end
+
+  end
+
   def get_negative_certificative user
     session = Mechanize.new
     session.get('http://www.fazenda.df.gov.br/area.cfm?id_area=449') do |page|

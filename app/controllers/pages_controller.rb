@@ -20,6 +20,11 @@ class PagesController < ApplicationController
     @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
     @users = User.client_role.all
   end
+
+  def test
+    s = AutomatizationService.new
+    response = s.get_payment_ticket
+  end
   # def test
   #   s = AutomatizationService.new
   #   # response =  s.get_negative_certificative current_user

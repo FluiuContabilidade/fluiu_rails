@@ -13,6 +13,10 @@ class Ability
       can :manage, Appointment
     end
 
+    if user.role == "client"
+      can :manage, User, id: user.id
+    end
+
     # if user.role == "client"
     #   can :manage, Invoice, user_id: user.id
     # end

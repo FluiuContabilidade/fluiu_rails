@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:add_monthly_accounting_info]
 
   def accounting_info
-    @user = current_user.id
+    @user = current_user
     @accounting_info = AccountingInfo.new()
   end
 

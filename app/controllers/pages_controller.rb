@@ -22,8 +22,8 @@ class PagesController < ApplicationController
   end
 
   def test
-    s = AutomatizationService.new
-    response = s.get_payment_ticket
+    # s = AutomatizationService.new
+    # response = s.get_payment_ticket
   end
   # def test
   #   s = AutomatizationService.new

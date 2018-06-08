@@ -3,7 +3,7 @@ class InvoicesController < ApplicationController
   skip_before_action :verify_authenticity_token, :only => [:add_monthly_accounting_info]
 
   def accounting_info
-    @user = User.find(params[:id])
+    @user = current_user.id
     @accounting_info = AccountingInfo.new()
   end
 
@@ -16,7 +16,7 @@ class InvoicesController < ApplicationController
 
     if params[:attachment] != nil
       params[:attachment][:files].each do |file|
-        create_invoice ({user_id: params[:user_id], file: file})
+        create_invoice ({user_id: current_user.id, file: file})
       end
     end
 

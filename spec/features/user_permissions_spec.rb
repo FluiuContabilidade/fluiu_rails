@@ -21,5 +21,23 @@ describe 'User abilities' do
 
   end
 
+  context 'when role is Client' do
+    before :each do
+      user = FactoryBot.build(:user, role: 'client')
+      user.confirm
+      @ability = Ability.new(user)
+    end
+
+    it "can access self accounting infos" do
+      ## TODO: create test
+    end
+
+    it "cannot access another user accounting infos" do
+      ## TODO: create test
+    end
+
+
+  end
+
 
 end

@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     post '/:id/edit', to: 'users#update'
 
     # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
-    get '/:id/accounting_info', to: 'invoices#accounting_info'
-    post '/:id/accounting_info', to: 'invoices#add_monthly_accounting_info'
+    get '/accounting_info', to: 'invoices#accounting_info'
+    post '/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end
 
   scope :appointments do

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
 
+    get '/files', to: 'users#index_files'
     get '/:id/invoices_index', to: 'users#invoices_index'
     get '/:id/my_files', to: 'users#files'
     get '/:id/add_tax_files', to: 'users#add_tax_files'
@@ -60,6 +61,7 @@ Rails.application.routes.draw do
       get 'individual/:id', to:'invoices#individual_report'
     end
 
+    get 'declare_nothing/:id/:date', to: 'invoices#declare_nothing', as: :declare_nothing
     post 'get_invoices/:id', to: 'invoices#get_user_invoices', as: :get_invoices
 
   end

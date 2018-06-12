@@ -1,0 +1,19 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h2>Documentos</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th ></th>
+        <th ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td width="5%"><%= image_tag("Folder.png", :alt => "folder", style: 'max-height: 2.5em; padding-right: -2em;') %></td>
+        <td style="padding-top: 1em;"> <a href="/users/<%=user.id%>/my_files"> <%= user.company %> </a> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

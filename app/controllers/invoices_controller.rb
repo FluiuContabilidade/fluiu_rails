@@ -66,4 +66,22 @@ class InvoicesController < ApplicationController
     end
   end
 
+  ## GET declare_nothing/:id/:date
+  # Create a Empty Invoice for last month of user
+  def declare_nothing
+    user = User.find(params[:id])
+
+    if user.invoices.where(month: params[:date]).size != 0
+      Invoice.create(user_id: params[:id], month: params[:date], declaration_flag: true)
+      redirect_to "/home"
+      flash[:success] = 'Declaração feita com sucesso.'
+      return
+    else
+      redirect_to "/home"
+      flash[:error] = 'Declaração já feita anteriormente.'
+      return
+    end
+
+  end
+
 end

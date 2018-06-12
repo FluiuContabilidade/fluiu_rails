@@ -54,6 +54,12 @@ class UsersController < ApplicationController
     @id = params[:id]
   end
 
+  ## GET /
+  # Returns index of user with files
+  def index_files
+    @users = User.client_role.all
+  end
+
   def files
   end
 

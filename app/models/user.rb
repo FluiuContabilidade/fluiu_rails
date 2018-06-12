@@ -25,6 +25,23 @@ class User < ApplicationRecord
  mount_uploader :tributary_sub, UserFileUploader
  mount_uploader :payment_installments, UserFileUploader
 
+ def invoice_from_month_is_empty? date
+   if invoices.where(month: date).last.declaration_flag == true
+     return true
+   else
+     return false
+   end
+ end
+
+## Method returns if user has monthly
+ def has_monthly_das? date
+   @date = date
+   das = documents.where(name: 'DAS')
+   das = das.reject {|a| a.created_at.strftime('%Y-%m') != @date }
+   return false if das == []
+   return true
+ end
+
  ## Method returns a list of users that have not sent invoices for the param date
  def self.not_sent_users date
    users = []

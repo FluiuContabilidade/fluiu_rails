@@ -22,9 +22,17 @@ class PagesController < ApplicationController
   end
 
   def fiscal_canvass
+    @sent_not_done = []
     @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
     @not_sent = User.not_sent_users @date
     @sent = User.client_role.all - @not_sent
+
+    @sent.each do |user|
+      @sent_not_done.push(user) if user.has_monthly_das? DateTime.now.strftime('%Y-%m') == false
+    end
+
+    @sent_done = @sent - @sent_not_done
+
   end
 
   ## TODO: Test this route
@@ -35,7 +43,7 @@ class PagesController < ApplicationController
     @not_sent = User.not_sent_users @date
 
     @not_sent.each do |user|
-      ApplicationMailer.invoices_reminder_mail(user).deliver_now
+      ApplicationMailer.invoices_reminder_mail(user, @date).deliver_now
     end
 
     flash[:success] = 'Enviado email para todos usuários que não enviaram as notas fiscais para o mês anterior.'
@@ -46,10 +54,5 @@ class PagesController < ApplicationController
     # s = AutomatizationService.new
     # response = s.get_payment_ticket
   end
-  # def test
-  #   s = AutomatizationService.new
-  #   # response =  s.get_negative_certificative current_user
-  #   s.get_debit_relative_certificate
-  # end
 
 end

@@ -7,19 +7,12 @@
       </tr>
     </thead>
     <tbody>
-      <% @months.each do |month| %>
+      <% @users.each do |user| %>
       <tr>
         <td width="5%"><%= image_tag("Folder.png", :alt => "folder", style: 'max-height: 2.5em; padding-right: -2em;') %></td>
-        <td style="padding-top: 1em;"> <a href="/invoices/monthly/<%=@id%>/<%=month%>"><%= month %></a> </td>
+        <td style="padding-top: 1em;"> <a href="/users/<%=user.id%>/invoices_index"><%= user.company %></a> </td>
       </tr>
       <% end %>
     </tbody>
   </table>
-
 </div>
-
-
-<!-- <% @months.each do |f| %>
-  <a href="/invoices/monthly/<%=@id%>/<%=f%>"><%=f%></a>
-  </br>
-<% end %> -->

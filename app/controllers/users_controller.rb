@@ -80,6 +80,11 @@ class UsersController < ApplicationController
     flash[:success] = 'Operação realizada com sucesso! Fluiu Contabilidade irá contactar você em breve!'
   end
 
+  # GET historic
+  ## Show all users client role
+  def historic
+  end
+
 
   private
     def user_params

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     get '/:id/edit(/:filter)', to: 'users#edit'
     post '/:id/edit', to: 'users#update'
 
+    get '/historic', to: 'users#historic'
+
     # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
     get '/accounting_info', to: 'invoices#accounting_info'
     post '/accounting_info', to: 'invoices#add_monthly_accounting_info'

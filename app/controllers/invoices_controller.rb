@@ -8,9 +8,11 @@ class InvoicesController < ApplicationController
   end
 
   def add_monthly_accounting_info
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
+
     a = AccountingInfo.new(canceled_invoices: params[:accounting_info][:canceled_invoices],
       paycheck_changes: params[:accounting_info][:paycheck_changes],
-      month: Time.now.strftime('%Y-%m'), user_id: current_user.id)
+      month: @date, user_id: current_user.id)
     a.financial_spreadsheet = params[:accounting_info][:financial_spreadsheet]
     a.save
 
@@ -71,7 +73,7 @@ class InvoicesController < ApplicationController
   def declare_nothing
     user = User.find(params[:id])
 
-    if user.invoices.where(month: params[:date]).size != 0
+    if user.invoices.where(month: params[:date]).size == 0
       Invoice.create(user_id: params[:id], month: params[:date], declaration_flag: true)
       redirect_to "/home"
       flash[:success] = 'Declaração feita com sucesso.'
@@ -81,7 +83,6 @@ class InvoicesController < ApplicationController
       flash[:error] = 'Declaração já feita anteriormente.'
       return
     end
-
   end
 
 end

@@ -28,6 +28,7 @@ class AutomatizationService
     return true
   end
 
+
   def get_debit_relative_certificate
     session = Mechanize.new
     client = DeathByCaptcha.new($DEATHBYCAPTCHA_USERNAME, $DEATHBYCAPTCHA_PASSWORD, :http)
@@ -63,7 +64,7 @@ class AutomatizationService
   end
 
 
-
+  
 
 
 

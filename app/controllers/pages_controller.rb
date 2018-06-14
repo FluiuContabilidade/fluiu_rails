@@ -24,11 +24,11 @@ class PagesController < ApplicationController
   def fiscal_canvass
     @sent_not_done = []
     @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
-    @not_sent = User.not_sent_users @date
+    @not_sent = User.not_sent_invoices_users @date
     @sent = User.client_role.all - @not_sent
 
     @sent.each do |user|
-      @sent_not_done.push(user) if user.has_monthly_das? DateTime.now.strftime('%Y-%m') == false
+      @sent_not_done.push(user) if user.has_monthly_document?("DAS", DateTime.now.strftime('%Y-%m')) == false
     end
 
     @sent_done = @sent - @sent_not_done
@@ -50,9 +50,27 @@ class PagesController < ApplicationController
     redirect_to '/agent/fiscal'
   end
 
-  def test
-    # s = AutomatizationService.new
-    # response = s.get_payment_ticket
+  def accounting
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
+    @not_sent = User.not_sent_accounting_info_users @date
   end
+
+
+  # def test
+  #
+  #   session = Mechanize.new
+  #   session.log = Logger.new "mech.log"
+  #   session.user_agent_alias = 'Mac Safari'
+  #
+  #   session.get('http://www.fazenda.df.gov.br/area.cfm?id_area=449') do |page|
+  #     page.form_with(:action => 'aplicacoes/certidao/emite_certidao.cfm') do |f|
+  #       f.radiobuttons_with(:name => 'identificador')[0].check
+  #       f.argumento = user.cpf
+  #       @response = f.submit
+  #     end
+  #   end
+  #   # s = AutomatizationService.new
+  #   # response = s.get_payment_ticket
+  # end
 
 end

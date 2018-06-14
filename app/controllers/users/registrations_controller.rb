@@ -86,7 +86,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :password, :remember_me) }
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj, :earnings_type, :earnings_range, :patrimonial_balance, :dre_file, :social_contract, :role, :opening_status, :business_licence, :cnpj_file, :personal_file, :protocol)
+      user_params.permit(:password, :password_confirmation, :email, :telephone, :cpf, :company, :cnpj, :earnings_type, :earnings_range, :patrimonial_balance, :dre_file, :social_contract, :role, :opening_status, :business_licence, :cnpj_file, :personal_file, :protocol , :name, :sys_id)
     end
   end
 

@@ -1,4 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'simplecov'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -60,4 +61,14 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Capybara::DSL
+end
+
+
+SimpleCov.start 'rails' do
+  add_filter 'vendor'
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/' # for
+  add_filter '/app/channels'
+  add_filter '/app/controllers/users'
 end

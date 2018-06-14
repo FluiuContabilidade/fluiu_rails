@@ -91,9 +91,35 @@ class UsersController < ApplicationController
   def historic
   end
 
+  ## GET import_invoices/id
+  # Loads user invoices importation page
+  def import_invoices
+    @user = User.find(params[:id])
+  end
+
+  ## POST import_invoices/id
+  # Adds invoices for user(id)
+  def post_import
+    @user = User.find(params[:id])
+
+    if params[:attachment] != nil
+      params[:attachment][:files].each do |file|
+        invoice = Invoice.new(user_id: @user.id)
+        invoice.invoice_file = file
+        if invoice.save
+          invoice.update_month_field
+        end
+      end
+
+      redirect_to "/home"
+      flash[:success] = 'Operação Efetuada com Sucesso!'
+      return
+    end
+  end
+
 
   private
     def user_params
-      params.require(:user).permit(:name, :das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status,  :protocol, :earnings_type, :earnings_range, :role)
+      params.require(:user).permit(:name, :das_file, :fgts, :inss, :fau, :tributary_sub, :payment_installments, :email, :company, :cnpj, :cpf, :telephone, :opening_status,  :protocol, :earnings_type, :earnings_range, :role, :name, :sys_id)
     end
 end

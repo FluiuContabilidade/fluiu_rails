@@ -25,8 +25,11 @@ Rails.application.routes.draw do
 
     get '/historic', to: 'users#historic'
 
+    get 'import_invoices/:id', to: 'users#import_invoices', as: :import_invoices
+    post 'import_invoices/:id', to: 'users#post_import'
+
     # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
-    get '/accounting_info', to: 'invoices#accounting_info'
+    get '/accounting_info', to: 'invoices#accounting_info', as: :accounting_info
     post '/accounting_info', to: 'invoices#add_monthly_accounting_info'
   end
 
@@ -51,6 +54,9 @@ Rails.application.routes.draw do
   end
 
   scope :invoices do
+    get 'declare_nothing/:id/:date', to: 'invoices#declare_nothing', as: :declare_nothing
+    post 'get_invoices/:id', to: 'invoices#get_user_invoices', as: :get_invoices
+
     scope :monthly do
       get ':id/:month', to: 'invoices#monthly_invoices'
       get ':id/:month/:type', to:'invoices#monthly_invoices_by_type'
@@ -60,9 +66,6 @@ Rails.application.routes.draw do
     scope :report do
       get 'individual/:id', to:'invoices#individual_report'
     end
-
-    get 'declare_nothing/:id/:date', to: 'invoices#declare_nothing', as: :declare_nothing
-    post 'get_invoices/:id', to: 'invoices#get_user_invoices', as: :get_invoices
 
   end
 
@@ -76,6 +79,11 @@ Rails.application.routes.draw do
       get '/', to: 'pages#fiscal_page'
       get '/canvass', to: 'pages#fiscal_canvass'
       get '/remind_not_sent_users', to: 'pages#remind_not_sent_users'
+    end
+
+    scope :accounting do
+      get '/', to: 'pages#accounting'
+      get '/index', to: 'pages#accounting_index'
     end
   end
 

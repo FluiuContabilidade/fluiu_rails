@@ -1,30 +1,41 @@
 .file-container {
-  display: inline-block;
+  display: flex;
 
   margin-right: 1em;
-  width: 15%;
+  margin-bottom: 3em;
+  width: 100%;
   height: 20vh;
-  // background-color: red;
 
-  .file-icon {
-    // display: block;
-    height: 70%;
-    width: 100%;
-    // background-color: green;
-    .icon {
-      display: block;
-      height: 90%;
-      width: 100%;
-    }
+  .file-header {
+    width: 20%;
+    display: inline-grid;
+      .file-icon {
+        height: 70%;
+        width: 100%;
+
+        .icon {
+          display: block;
+          height: 6em;
+          width: 40%;
+          margin: 0 auto;
+          margin-bottom: 1em;
+        }
+      }
+
+      .file-name{
+        height: 30%;
+        width: 100%;
+        text-align: center;
+      }
   }
 
-  .file-name{
-    // display: block;
-    height: 30%;
-    width: 100%;
-    text-align: center;
-    // background-color: blue;
+  .file-content {
+    display: inline-block;
+    margin-left: 2em;
+    width: 70%;
+    height: 80%;
+    margin: 0 auto;
+    margin-top: 1em;
   }
-
 
 }

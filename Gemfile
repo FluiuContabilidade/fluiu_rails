@@ -59,9 +59,7 @@ gem "fog-aws"
 gem 'awesome_print', '~> 1.8', require: 'ap'
 gem 'rubyzip'
 gem 'zip-zip'
-
-
-
+gem 'jquery_mask_rails', '~> 0.1.0'
 
 
 group :development, :test do
@@ -73,6 +71,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem "factory_bot_rails"
+  gem 'simplecov', require: false, group: :test
 end
 
 group :development do

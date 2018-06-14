@@ -1,4 +1,4 @@
 <%# TODO: Fix links %>
 <p>Olá, <%= @user.company %></p>
-<p>Por favor, acesse  <a href="#">este link</a> para enviar suas notas fiscais do mês anterior(<%=@date%>).</p>
+<p>Por favor, <%= link_to 'Clique aqui', accounting_info_url %> para enviar suas notas fiscais do mês anterior(<%=@date%>).</p>
 <p>Caso não possua nenhuma a ser enviada, <%= link_to 'Clique aqui', declare_nothing_url(id: @user.id, date: @date) %>.</p>

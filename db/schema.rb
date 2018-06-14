@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607153150) do
+ActiveRecord::Schema.define(version: 20180612161251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20180607153150) do
     t.integer "owner"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "file"
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.bigint "user_id"
     t.string "month"
@@ -43,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180607153150) do
     t.datetime "updated_at", null: false
     t.string "invoice_file"
     t.bigint "accounting_info_id"
+    t.boolean "declaration_flag"
     t.index ["accounting_info_id"], name: "index_invoices_on_accounting_info_id"
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 20180607153150) do
   end
 
   add_foreign_key "accounting_infos", "users"
+  add_foreign_key "documents", "users"
   add_foreign_key "invoices", "accounting_infos"
   add_foreign_key "invoices", "users"
 end

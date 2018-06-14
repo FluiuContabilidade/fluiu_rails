@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/details/:id', to: 'users#show'
     get '/delete/:id', to: 'users#destroy'
 
+    get '/files', to: 'users#index_files'
     get '/:id/invoices_index', to: 'users#invoices_index'
     get '/:id/my_files', to: 'users#files'
     get '/:id/add_tax_files', to: 'users#add_tax_files'
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     ## User Edit Routes
     get '/:id/edit(/:filter)', to: 'users#edit'
     post '/:id/edit', to: 'users#update'
+
+    get '/historic', to: 'users#historic'
 
     # FIXME:  - BAD modularization - Transfer theses routes into invoices scope
     get '/accounting_info', to: 'invoices#accounting_info'
@@ -58,13 +61,21 @@ Rails.application.routes.draw do
       get 'individual/:id', to:'invoices#individual_report'
     end
 
-    get 'get_invoices/:id', to: 'invoices#get_user_invoices'
+    get 'declare_nothing/:id/:date', to: 'invoices#declare_nothing', as: :declare_nothing
+    post 'get_invoices/:id', to: 'invoices#get_user_invoices', as: :get_invoices
 
+  end
+
+  scope :documents do
+    get '/das/:id', to: 'documents#das_page'
+    post '/add_das', to: 'documents#add_das'
   end
 
   scope :agent do
     scope :fiscal do
       get '/', to: 'pages#fiscal_page'
+      get '/canvass', to: 'pages#fiscal_canvass'
+      get '/remind_not_sent_users', to: 'pages#remind_not_sent_users'
     end
   end
 

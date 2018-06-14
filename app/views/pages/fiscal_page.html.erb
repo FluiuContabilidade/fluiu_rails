@@ -1,6 +1,6 @@
-<div style="width: 80%; margin: 0 auto;">
-  <h1>Clientes</h1>
-
+<!-- <div style="width: 80%; margin: 0 auto;">
+  <h2>Clientes</h2>
+  <br>
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -16,16 +16,35 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.company %></td>
-        <% if user.has_month_invoices? @date %>
-          <td> <a href="/invoices/get_invoices/<%=user.id%>" class="btn btn-info">Apuração</a></td>
-        <% else %>
-          <td>Não emitiu notas.</td>
-        <% end %>
         <td>  <td> <a href="/users/<%=user.id%>/my_files">Documentos</a> </td></td>
         <td> <a href="/users/<%=user.id%>/invoices_index">Histórico</a> </td>
       </tr>
       <% end %>
     </tbody>
   </table>
+
+  <a href="fiscal/canvass" class="btn btn-info">Apuração</a>
+
+</div> -->
+
+<div class="home-page-container">
+  <!-- <h1>oi</h1> -->
+  <a href="/users/historic" class="info-box" >
+    <div class="info-box-container">
+      <h1 class="info-box-title" style="text-decoration: none;">Histórico</h1>
+    </div>
+  </a>
+
+  <a href="fiscal/canvass" class="info-box" >
+    <div class="info-box-container">
+      <h1 class="info-box-title" style="text-decoration: none;">Apuração</h1>
+    </div>
+  </a>
+
+  <a href="/users/files" class="info-box" >
+    <div class="info-box-container">
+      <h1 class="info-box-title" style="text-decoration: none;">Documentos</h1>
+    </div>
+  </a>
 
 </div>

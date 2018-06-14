@@ -7,16 +7,22 @@ class InvoicesService
     filename = user.company + DateTime.now.to_s + '.zip'
     temp_file = Tempfile.new(filename)
 
-    ## 07/06/2018
-    # FIXME:  This will only work on production environment.
-    Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip_file|
-      @invoices.each do |f|
-         zip_file.add(f.invoice_file.file.filename, f.invoice_file.path)
+    begin
+      ## 07/06/2018
+      # FIXME:  This will only work on production environment.
+      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip_file|
+        @invoices.each do |f|
+          zip_file.add(f.invoice_file.file.filename, f.invoice_file.path)
+        end
       end
-    end
 
-    zip_data = File.read(temp_file.path)
-    return {data: zip_data, filename: filename}
+      zip_data = File.read(temp_file.path)
+      return {data: zip_data, filename: filename}
+
+    rescue
+      return nil
+    end
+    
   end
 
   def self.setup_invoice_collection collection

@@ -25,16 +25,19 @@ class InvoicesController < ApplicationController
     # return
   end
 
-  ## GET /get_invoices/user_id
+  ## POST /get_invoices/user_id
+  ## Sends a ZIP document to requester containing invoices of param month for param user.
   def get_user_invoices
     user = User.find(params[:id])
 
-    begin
-      @zip_file = InvoicesService.zip_invoice_files user
+    @zip_file = InvoicesService.zip_invoice_files user
+    if @zip_file
       send_data(@zip_file[:data], :type => 'application/zip', :filename => @zip_file[:filename])
       flash[:success] = 'Arquivo enviado com sucesso!'
-    rescue
+      return
+    else
       flash[:error] = 'Algum erro ocorreu. XMLs não válidos foram encontrados.'
+      return
     end
 
   end
@@ -61,6 +64,24 @@ class InvoicesController < ApplicationController
     if params[:filter] == 'dif_origin'
       @invoices = @invoices.reject {|invoice| Invoice.is_a_local_invoice?(invoice.invoice_file.read) == true }
     end
+  end
+
+  ## GET declare_nothing/:id/:date
+  # Create a Empty Invoice for last month of user
+  def declare_nothing
+    user = User.find(params[:id])
+
+    if user.invoices.where(month: params[:date]).size != 0
+      Invoice.create(user_id: params[:id], month: params[:date], declaration_flag: true)
+      redirect_to "/home"
+      flash[:success] = 'Declaração feita com sucesso.'
+      return
+    else
+      redirect_to "/home"
+      flash[:error] = 'Declaração já feita anteriormente.'
+      return
+    end
+
   end
 
 end

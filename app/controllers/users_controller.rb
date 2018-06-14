@@ -54,6 +54,12 @@ class UsersController < ApplicationController
     @id = params[:id]
   end
 
+  ## GET /
+  # Returns index of user with files
+  def index_files
+    @users = User.client_role.all
+  end
+
   def files
   end
 
@@ -78,6 +84,11 @@ class UsersController < ApplicationController
     @user.request_opening_status_change params[:message]
     redirect_to "/home"
     flash[:success] = 'Operação realizada com sucesso! Fluiu Contabilidade irá contactar você em breve!'
+  end
+
+  # GET historic
+  ## Show all users client role
+  def historic
   end
 
 

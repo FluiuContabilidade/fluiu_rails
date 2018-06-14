@@ -1,0 +1,55 @@
+<div style="width: 80%; margin: 0 auto;">
+  <h2>Apuração</h2>
+  <br>
+
+  <h3>A fazer:</h3>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Empresa</th>
+        <th></th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @sent_not_done.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.company %></td>
+        <% if user.has_month_accounting_info?(@date) == true %>
+          <td> <a href="<%=user.valid_accounting_info_url(@date)%>" download>Download Excel</a> </td>
+        <% else %>
+          <td>Informado</td>
+        <% end %>
+        <td> <a href="/documents/balancete_page/<%=user.id%>"> Anexar Balancete </a> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <h3>Feitas:</h3>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Empresa</th>
+        <th></th>
+        <th></th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @sent_done.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.company %></td>
+        <td> OK </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

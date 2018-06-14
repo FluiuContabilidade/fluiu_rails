@@ -1,7 +1,14 @@
 class PagesController < ApplicationController
   # load_and_authorize_resource
   include PagesHelper
+  before_action :set_variables, only: [:fiscal_canvass, :accounting]
 
+  def set_variables
+    @sent_not_done = []
+    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
+    @not_sent = User.not_sent_invoices_users @date
+    @sent = User.client_role.all - @not_sent
+  end
 
   def home_page
     @user = current_user
@@ -22,17 +29,12 @@ class PagesController < ApplicationController
   end
 
   def fiscal_canvass
-    @sent_not_done = []
-    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
-    @not_sent = User.not_sent_invoices_users @date
-    @sent = User.client_role.all - @not_sent
 
     @sent.each do |user|
       @sent_not_done.push(user) if user.has_monthly_document?("DAS", DateTime.now.strftime('%Y-%m')) == false
     end
 
     @sent_done = @sent - @sent_not_done
-
   end
 
   ## TODO: Test this route
@@ -40,7 +42,7 @@ class PagesController < ApplicationController
   ## Send email to all users that did not send invoices for prior month
   def remind_not_sent_users
     @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
-    @not_sent = User.not_sent_users @date
+    @not_sent = User.not_sent_invoices_users @date
 
     @not_sent.each do |user|
       ApplicationMailer.invoices_reminder_mail(user, @date).deliver_now
@@ -51,8 +53,12 @@ class PagesController < ApplicationController
   end
 
   def accounting
-    @date = DateTime.new(DateTime.now.year, DateTime.now.month - 1, DateTime.now.day).strftime('%Y-%m')
-    @not_sent = User.not_sent_accounting_info_users @date
+
+    @sent.each do |user|
+      @sent_not_done.push(user) if user.has_monthly_document?("Balancete", DateTime.now.strftime('%Y-%m')) == false
+    end
+
+    @sent_done = @sent - @sent_not_done
   end
 
 

@@ -26,13 +26,23 @@ class User < ApplicationRecord
  mount_uploader :payment_installments, UserFileUploader
 
 
-# Returns all users that have not sent date Accounting Info
-def self.not_sent_accounting_info_users date
-  users = []
-  User.client_role.all.each do |user|
-    users.push(user) if user.accounting_infos.where(month: date).size == 0
+def valid_accounting_info_url date
+  accounting_info = accounting_infos.where(month: date)
+  accounting_info = accounting_info.where.not(financial_spreadsheet: nil)
+
+  accounting_info.each do |e|
+    return e.financial_spreadsheet.url
   end
-  return users
+
+end
+
+# Returs if user has accounting info where financial_spreadsheet is not nil for the date given
+def has_month_accounting_info? date
+  accounting_info = accounting_infos.where(month: date)
+  accounting_info = accounting_info.where.not(financial_spreadsheet: nil)
+
+  return true if accounting_info.size != 0
+  return false
 end
 
  # Returns true if user created Invoice with the declaration_flag == true

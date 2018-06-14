@@ -72,6 +72,8 @@ Rails.application.routes.draw do
   scope :documents do
     get '/das/:id', to: 'documents#das_page'
     post '/add_das', to: 'documents#add_das'
+    get '/balancete_page/:id', to: 'documents#balancete_page'
+    post '/add_balancete', to: 'documents#add_balancete'
   end
 
   scope :agent do

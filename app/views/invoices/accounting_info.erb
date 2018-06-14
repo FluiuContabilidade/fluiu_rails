@@ -1,29 +1,28 @@
 <%= form_for @accounting_info, url: 'accounting_info', html: { method: :post } do |f| %>
-  <div class="" style="width:60%; margin:0 auto;">
+  <div class="" style="width:50%; margin-left: 10%;">
     <!-- <div class="form-group">
     </div> -->
 
     <div class="form-group">
-      <%= f.label :financial_spreadsheet, 'Planilha Financeira'%> - <span>( <a href="https://s3-sa-east-1.amazonaws.com/fluiu-rails-app/Planilha+Cont%C3%A1bil.xlsx" download >Clique Aqui</a> ) para baixar modelo da Planilha Financeira</span>
+      <%= f.label :financial_spreadsheet, 'Anexe aqui sua planilha financeira'%>
+      <p style="font-size:  0.8em;"> <a href="https://s3-sa-east-1.amazonaws.com/fluiu-rails-app/Planilha+Cont%C3%A1bil.xlsx" download >Clique Aqui</a>  para baixar modelo da Planilha Financeira</p>
       <%= f.file_field :financial_spreadsheet %>
     </div>
-
+    <br>
     <div class="form-group">
-      <%= f.label :invoices, 'XMLs das notas fiscais' %>
+      <%= f.label :invoices, 'Anexe aqui o xml das notas que foram emitidas' %>
       <%= f.file_field :invoices, multiple: true, name: "attachment[files][]" %>
     </div>
-
+    <br>
     <div class="form-group">
-      <%= f.label :canceled_invoices, 'Notas canceladas' %>
+      <%= f.label :canceled_invoices, 'Você cancelou ou inutilizou alguma nota? Informe o(s) número(s) destas' %>
       <%= f.text_field :canceled_invoices, class: 'form-control' %>
     </div>
-
     <div class="form-group">
       <%= f.label :paycheck_changes, 'Mudanças na Folha de Pagamento' %>
-      <%= f.text_area :paycheck_changes , class: 'form-control'%>
+      <%= f.text_area :paycheck_changes , class: 'form-control', size:'30'%>
     </div>
-
     <input type="hidden" name="user_id" value="<%=@user.id%>">
-    <%= f.submit "Enviar", class:'btn btn-default' %>
+    <%= f.submit "Enviar", class:'btn btn-info' %>
   </div>
 <% end %>

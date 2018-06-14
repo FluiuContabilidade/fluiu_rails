@@ -13,14 +13,14 @@ describe 'visits application pages' do
     expect(page).to have_content 'Responsabilidades Fluiu'
   end
 
-  it "visits remind not sent users route" do
-    user = FactoryBot.build(:user, role: 'client')
-    user.confirm
-    visit '/agent/fiscal/remind_not_sent_users'
-    x = ActionMailer::Base.deliveries.count
-    byebug
-
-    expect{   visit '/agent/fiscal/remind_not_sent_users' }.to change { ActionMailer::Base.deliveries.count }.by(1)
-  end
+  # it "visits remind not sent users route" do
+  #   user = FactoryBot.build(:user, role: 'client')
+  #   user.confirm
+  #   visit '/agent/fiscal/remind_not_sent_users'
+  #   x = ActionMailer::Base.deliveries.count
+  #   byebug
+  #
+  #   expect{   visit '/agent/fiscal/remind_not_sent_users' }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  # end
 
 end

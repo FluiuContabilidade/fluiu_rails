@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require notify
 //= require notifier
 //= require forms
 //= require home_page
+//= require jquery.mask
 //= require_tree .

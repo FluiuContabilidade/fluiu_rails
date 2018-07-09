@@ -1,52 +1,77 @@
 <div style="width:80%; margin: 0 auto;">
   <h2>Meus Arquivos</h2>
   <br>
+  <br>
 
   <div class="file-container">
-    <div class="file-icon">
-      <a href="<%=@user.patrimonial_balance.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    <div class="file-header">
+      <div class="file-icon">
+        <a href="<%=@user.patrimonial_balance.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      </div>
+      <div class="file-name">
+        <h4 style="display: grid;margin: 0;"> Balanço Patrimonial </h4>
+      </div>
     </div>
-    <div class="file-name">
-      <p style="display: grid;"> Balanço Patrimonial </p>
-    </div>
-  </div>
-
-  <div class="file-container">
-    <div class="file-icon">
-      <a href="<%=@user.dre_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
-    </div>
-    <div class="file-name">
-      <p style="display: grid;"> DRE </p>
+    <div class="file-content">
+      <p>Unica linha.</p>
     </div>
   </div>
 
   <div class="file-container">
-    <div class="file-icon">
-      <a href="<%=@user.social_contract.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    <div class="file-header">
+      <div class="file-icon">
+        <a href="<%=@user.dre_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      </div>
+      <div class="file-name">
+        <h4 style="display: grid;margin: 0;"> DRE </h4>
+      </div>
     </div>
-    <div class="file-name">
-      <p style="display: grid;">Contrato Social</p>
+    <div class="file-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus, sapien sit amet tempor pulvinar, nulla urna dapibus ante, a tristique ipsum leo vitae mauris. Nulla convallis felis ac nulla tincidunt laoreet. Aenean pharetra ut lacus quis fermentum. Nam sodales consectetur ante, a malesuada neque lobortis fermentum. Phasellus non felis sed nisi mollis feugiat in nec velit.</p>
     </div>
-      <!-- <%= link_to "Contrato Social", @user.social_contract.url %> -->
   </div>
 
   <div class="file-container">
-    <div class="file-icon">
-      <a href="<%=@user.business_licence.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    <div class="file-header">
+      <div class="file-icon">
+        <a href="<%=@user.social_contract.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      </div>
+      <div class="file-name">
+        <h4 style="display: grid;margin: 0;"> Contrato Social </h4>
+      </div>
     </div>
-    <div class="file-name">
-      <p style="display: grid;">Alvará de Funcionamento</p>
+    <div class="file-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus, sapien sit amet tempor pulvinar, nulla urna dapibus ante, a tristique ipsum leo vitae mauris. Nulla convallis felis ac nulla tincidunt laoreet. Aenean pharetra ut lacus quis fermentum. Nam sodales consectetur ante, a malesuada neque lobortis fermentum. Phasellus non felis sed nisi mollis feugiat in nec velit.</p>
     </div>
-    <!-- <%= link_to "Alvará de Funcionamento", @user.business_licence.url %> -->
   </div>
+
   <div class="file-container">
-    <div class="file-icon">
-      <a href="<%=@user.cnpj_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+    <div class="file-header">
+      <div class="file-icon">
+        <a href="<%=@user.business_licence.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      </div>
+      <div class="file-name">
+        <h4 style="display: grid;margin: 0;"> Alvará de Funcionamento </h4>
+      </div>
     </div>
-    <div class="file-name">
-      <p style="display: grid;">CNPJ</p>
+    <div class="file-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus, sapien sit amet tempor pulvinar, nulla urna dapibus ante, a tristique ipsum leo vitae mauris. Nulla convallis felis ac nulla tincidunt laoreet. Aenean pharetra ut lacus quis fermentum. Nam sodales consectetur ante, a malesuada neque lobortis fermentum. Phasellus non felis sed nisi mollis feugiat in nec velit.</p>
     </div>
-    <!-- <%= link_to "CNPJ", @user.cnpj_file.url %> -->
   </div>
-  
+
+  <div class="file-container">
+    <div class="file-header">
+      <div class="file-icon">
+        <a href="<%=@user.cnpj_file.url%>"><%= image_tag('pdf_icon.svg', class: 'icon')%></a>
+      </div>
+      <div class="file-name">
+        <h4 style="display: grid;margin: 0;"> CNPJ </h4>
+      </div>
+    </div>
+    <div class="file-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus, sapien sit amet tempor pulvinar, nulla urna dapibus ante, a tristique ipsum leo vitae mauris. Nulla convallis felis ac nulla tincidunt laoreet. Aenean pharetra ut lacus quis fermentum. Nam sodales consectetur ante, a malesuada neque lobortis fermentum. Phasellus non felis sed nisi mollis feugiat in nec velit.</p>
+    </div>
+  </div>
+
+
 </div>

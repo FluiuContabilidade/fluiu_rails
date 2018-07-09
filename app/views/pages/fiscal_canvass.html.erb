@@ -46,7 +46,11 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.company %></td>
-        <td> <%= link_to "Download XMLs", get_invoices_path(id: user.id), method: :post %> </td>
+        <% if user.invoice_from_month_is_empty?(@date) != true %>
+          <td> <%= link_to "Download XMLs", get_invoices_path(id: user.id), method: :post %> </td>
+        <% else %>
+          <td>Informado</td>
+        <% end %>
         <td> <a href="/documents/das/<%=user.id%>"> Anexar DAS </a> </td>
       </tr>
       <% end %>
@@ -70,13 +74,7 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.company %></td>
-        <% if user.invoice_from_month_is_empty?(@date) != true %>
-          <td> <%= link_to "Download XMLs", get_invoices_path(id: user.id), method: :post %> </td>
-          <td> <a href="/documents/das/<%=user.id%>"> Anexar DAS </a> </td>
-        <% else %>
-          <td> Informado. </td>
-          <td> <a href="/documents/das/<%=user.id%>"> Anexar DAS </a> </td>
-        <% end %>
+        <td> OK </td>
       </tr>
       <% end %>
     </tbody>

@@ -25,6 +25,27 @@ class User < ApplicationRecord
  mount_uploader :tributary_sub, UserFileUploader
  mount_uploader :payment_installments, UserFileUploader
 
+
+def valid_accounting_info_url date
+  accounting_info = accounting_infos.where(month: date)
+  accounting_info = accounting_info.where.not(financial_spreadsheet: nil)
+
+  accounting_info.each do |e|
+    return e.financial_spreadsheet.url
+  end
+
+end
+
+# Returs if user has accounting info where financial_spreadsheet is not nil for the date given
+def has_month_accounting_info? date
+  accounting_info = accounting_infos.where(month: date)
+  accounting_info = accounting_info.where.not(financial_spreadsheet: nil)
+
+  return true if accounting_info.size != 0
+  return false
+end
+
+ # Returns true if user created Invoice with the declaration_flag == true
  def invoice_from_month_is_empty? date
    if invoices.where(month: date).last.declaration_flag == true
      return true
@@ -34,16 +55,16 @@ class User < ApplicationRecord
  end
 
 ## Method returns if user has monthly
- def has_monthly_das? date
+ def has_monthly_document?(name,date)
    @date = date
-   das = documents.where(name: 'DAS')
+   das = documents.where(name: name)
    das = das.reject {|a| a.created_at.strftime('%Y-%m') != @date }
    return false if das == []
    return true
  end
 
  ## Method returns a list of users that have not sent invoices for the param date
- def self.not_sent_users date
+ def self.not_sent_invoices_users date
    users = []
    User.client_role.all.each do |user|
      users.push(user) if !(user.has_month_invoices? date)
